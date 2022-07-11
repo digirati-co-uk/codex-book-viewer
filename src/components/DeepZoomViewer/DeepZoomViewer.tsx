@@ -1,15 +1,15 @@
 import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
 import {
   CanvasContext,
-  ContextBridge, getPaintables, useCanvasClock,
+  ContextBridge, getPaintables, useCanvas, useCanvasClock,
   useContextBridge,
   useManifest,
   useVault,
   useVisibleCanvases
-} from 'react-iiif-vault';
+} from "react-iiif-vault";
 import { getValue } from '@iiif/vault-helpers';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
-import { blackBg } from '../../tokens';
+import { blackBg2 } from '../../tokens';
 import { AtlasAuto } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
@@ -20,9 +20,10 @@ interface DeepZoomViewerProps {
 }
 
 export function DeepZoomViewer(props: DeepZoomViewerProps) {
-  const manifest = useManifest();
   const canvases = useVisibleCanvases();
+  const canvas = useCanvas();
 
+  console.log(canvas.metadata[1])
   let acc = 0;
   const canvasComponents = canvases.map((canvas) => {
     const x = acc;
@@ -37,13 +38,13 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
 
   return (
     <Container>
-      <Heading>{getValue(manifest.label)}</Heading>
+      <Heading>Book {getValue(canvas.metadata[1].value)} - book title</Heading>
       <ViewerControls initCanvas={props.initCanvas} />
       <style>{`
         .atlas-container {
           min-width: 0; 
           --atlas-container-flex: 1 1 0px;
-          --atlas-background:  ${blackBg};
+          --atlas-background:  ${blackBg2};
         }
       `}</style>
       <AtlasContainer>

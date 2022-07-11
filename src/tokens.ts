@@ -1,4 +1,4 @@
-export const greyBg = '#2B3037';
+export const greyBg = '#2A3037';
 export const greyBg2 = '#373d46';
 export const blackBg = '#000';
 export const blackBg2 = '#151515';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blackBg, serif, whiteText } from '../../tokens';
+import { blackBg2, serif, whiteText } from '../../tokens';
 
 export const Heading = styled.h1`
   font-size: 1.8em;
@@ -13,7 +13,7 @@ export const Heading = styled.h1`
 `;
 
 export const Container = styled.div`
-  background: ${blackBg};
+  background: ${blackBg2};
   flex: 1;
   display: flex;
   flex-direction: column;
