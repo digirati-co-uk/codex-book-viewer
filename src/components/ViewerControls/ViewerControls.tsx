@@ -1,4 +1,4 @@
-import { useSimpleViewer } from 'react-iiif-vault';
+import { useCanvas, useManifest, useSimpleViewer, useVisibleCanvases } from "react-iiif-vault";
 import {
   ButtonIcon,
   Button,
@@ -14,13 +14,28 @@ import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useState } from 'react';
 
-export function ViewerControls() {
+interface ViewerControlsProps {
+  initCanvas: number;
+}
+
+export function ViewerControls(props: ViewerControlsProps) {
+  const canvas = useCanvas();
+  const manifest = useManifest();
   const { totalCanvases, currentCanvasIndex, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
-  const [cachedValue, setCachedValue] = useState(currentCanvasIndex);
+  // const [cachedValue, setCachedValue] = useState(currentCanvasIndex);
+  const [cachedFolio, setCachedFolio] = useState(null);
 
   useEffect(() => {
-    setCachedValue(currentCanvasIndex + 1);
-  }, [currentCanvasIndex]);
+    canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
+  }, [canvas]);
+
+  useEffect(() => {
+    setCurrentCanvasIndex(props.initCanvas);
+  }, []);
+
+  // useEffect(() => {
+  //   setCachedValue(currentCanvasIndex + 1);
+  // }, [currentCanvasIndex]);
 
   return (
     <FloatingContainerOuter>
@@ -33,13 +48,14 @@ export function ViewerControls() {
             Previous
           </Button>
           <CentralContainer>
-            <InputLabel>Page</InputLabel>
-            <Input
-              type="number"
-              value={cachedValue}
-              onChange={(e) => setCachedValue(e.currentTarget.valueAsNumber)}
-              onBlur={(e) => setCurrentCanvasIndex(e.currentTarget.valueAsNumber - 1)}
-            />
+            <InputLabel>Folio </InputLabel>
+            <InputLabel>{cachedFolio}</InputLabel>
+            {/*<Input*/}
+            {/*  type="text"*/}
+            {/*  value={cachedFolio}*/}
+            {/*  onChange={(e) => setCachedFolio(e.currentTarget)}*/}
+            {/*  onBlur={(e) => setCurrentCanvasIndex(e.currentTarget.valueAsNumber - 1)}*/}
+            {/*/>*/}
             <TextContainer>of</TextContainer>
             <TextContainer>
               <strong>{totalCanvases}</strong>

@@ -7,6 +7,7 @@ import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
 
 interface GettyViewerProps {
   manifest: string;
+  initCanvas: number;
 }
 
 export function GettyViewer(props: GettyViewerProps) {
@@ -21,7 +22,7 @@ export function GettyViewer(props: GettyViewerProps) {
           }
           actions={<div>actions</div>}
         >
-          <DeepZoomViewer />
+          <DeepZoomViewer initCanvas={props.initCanvas} />
         </Grid>
       </MainProvider>
     </VaultProvider>

@@ -20,11 +20,11 @@ export function ThumbnailPagedList() {
     }
   }, [currentCanvasIndex]);
 
+
   return (
     <ThumbnailViewer>
       {manifest.items.map((canvasRef, idx) => {
         const canvas = vault.get<CanvasNormalized>(canvasRef);
-
         const T = canvas.behavior.indexOf('non-paged') !== -1 || idx === 0 ? ThumbnailCover : Thumbnail;
 
         return (
