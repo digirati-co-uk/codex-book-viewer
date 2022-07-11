@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { greyBg2, highlight } from '../../tokens';
+import { greyBg, highlight, serif, whiteText } from "../../tokens";
 
 export const Thumbnail = styled.div<{ $active?: boolean }>`
-  background: ${greyBg2};
+  background: ${greyBg};
   border-radius: 5px;
   padding: 5px;
   outline: 2px solid transparent;
@@ -31,7 +31,7 @@ export const ThumbnailPlaceholder = styled.div`
   display: inline-block;
   width: 128px;
   height: 168px;
-  background: ${greyBg2};
+  background: ${greyBg};
 `;
 
 export const ThumbnailImage = styled(LazyLoadImage)`
@@ -42,6 +42,7 @@ export const ThumbnailImage = styled(LazyLoadImage)`
   object-position: center;
   width: 128px;
   height: 172px;
+  border-radius: 15px;
 `;
 
 export const ThumbnailViewer = styled.div`
@@ -53,4 +54,11 @@ export const ThumbnailViewer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: min-content;
   justify-items: center;
+`;
+export const ThumbnailTitle = styled.h2`
+  font-size: 12px;
+  font-weight: 400;
+  font-family: ${serif};
+  text-rendering: geometricPrecision;
+  color: ${whiteText};
 `;

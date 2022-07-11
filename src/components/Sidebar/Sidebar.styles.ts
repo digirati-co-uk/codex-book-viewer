@@ -4,14 +4,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: ${greyBg};
   color: ${whiteText};
-  padding: 1em;
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 8em 1em 1em 1em;
 `;
 
 export const Heading = styled.h3`
-  font-size: 1.4em;
+  font-size: 18px;
   font-family: ${serif};
   text-rendering: geometricPrecision;
   font-weight: 400;

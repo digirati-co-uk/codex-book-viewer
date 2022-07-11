@@ -26,4 +26,5 @@ export const AtlasContainer = styled.div`
   flex: 1 1 0px;
   flex-direction: column;
   min-width: 0;
+  margin-top: 3em; 
 `;
