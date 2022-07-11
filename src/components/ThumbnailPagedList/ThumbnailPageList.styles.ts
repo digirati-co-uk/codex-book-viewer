@@ -37,7 +37,6 @@ export const ThumbnailPlaceholder = styled.div`
 export const ThumbnailImage = styled(LazyLoadImage)`
   display: block;
   max-width: 100%;
-
   object-fit: contain;
   object-position: center;
   width: 128px;

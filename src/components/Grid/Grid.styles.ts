@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { ThumbnailViewer } from '../ThumbnailPagedList/ThumbnailPageList.styles';
 
 export const Container = styled.div`
   display: flex;
@@ -18,10 +19,21 @@ export const Sidebar = styled.aside<{ $open: boolean; $expanded: boolean }>`
           ${props.$expanded &&
           css`
             // Expanded styles.
+            width: 90vw;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 12;
+
+            ${ThumbnailViewer} {
+              grid-template-columns: repeat(10, 1fr);
+            }
           `}
         `
       : css`
           // Closed styles.
+          width: 0;
         `}
 `;
 

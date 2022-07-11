@@ -20,7 +20,7 @@ export function GettyViewer(props: GettyViewerProps) {
               <ThumbnailPagedList />
             </Sidebar>
           }
-          actions={<div>actions</div>}
+          actions={<div>hiya</div>}
         >
           <DeepZoomViewer initCanvas={props.initCanvas} />
         </Grid>

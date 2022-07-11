@@ -10,6 +10,7 @@ export const Heading = styled.h1`
   text-align: center;
   text-rendering: geometricPrecision;
   font-weight: 400;
+  z-index: 13;
 `;
 
 export const Container = styled.div`
@@ -23,8 +24,8 @@ export const Container = styled.div`
 
 export const AtlasContainer = styled.div`
   display: flex;
-  flex: 1 1 0px;
+  flex: 1 1 0;
   flex-direction: column;
   min-width: 0;
-  margin-top: 3em; 
+  margin-top: 3em;
 `;

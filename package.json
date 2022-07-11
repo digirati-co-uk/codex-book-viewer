@@ -24,10 +24,10 @@
     "vite-preset-react": "^2.2.0"
   },
   "dependencies": {
-    "@iiif/presentation-3": "^1.0.5",
     "@atlas-viewer/atlas": "^2.0.0-alpha.10",
     "@atlas-viewer/iiif-image-api": "^2.0.3",
     "@iiif/parser": "1.*",
+    "@iiif/presentation-3": "^1.0.5",
     "@iiif/vault": "0.9.*",
     "@iiif/vault-helpers": "0.9.*",
     "eslint": "^8.14.0",
@@ -38,6 +38,7 @@
     "react-iiif-vault": "0.9.*",
     "react-is": "17.*",
     "react-lazy-load-image-component": "^1.5.4",
-    "styled-components": "5.*"
+    "styled-components": "5.*",
+    "styled-icons": "^10.45.0"
   }
 }

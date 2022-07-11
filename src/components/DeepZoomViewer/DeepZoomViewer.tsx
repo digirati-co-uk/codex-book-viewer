@@ -39,7 +39,7 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
 
   return (
     <Container>
-      <Heading>Book {canvases[0].metadata[1].value.en} - book title</Heading>
+      <Heading>Book 11 - book title</Heading>
       <ViewerControls initCanvas={props.initCanvas} />
       <style>{`
         .atlas-container {

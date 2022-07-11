@@ -1,6 +1,6 @@
-import { Container, Heading, Content } from './Sidebar.styles';
+import { Container, Heading, Content, Resizer, Handle } from './Sidebar.styles';
 import { useTranslation } from 'react-i18next';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 
 interface SidebarProps {
   children: ReactElement;
