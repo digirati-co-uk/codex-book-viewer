@@ -24,11 +24,13 @@ export function Grid(props: GridProps) {
     } as GridContext;
   }, []);
 
+  console.log(expanded);
+
   return (
     <GridReactContext.Provider value={value}>
       <GridStateReactContext.Provider value={useMemo(() => ({ open, expanded }), [open, expanded])}>
         <Container>
-          <Sidebar $expanded={true} $open={true}>
+          <Sidebar $expanded={expanded} $open={open}>
             {props.sidebar}
           </Sidebar>
           <Main>{props.children}</Main>
