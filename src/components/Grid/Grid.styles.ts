@@ -34,11 +34,23 @@ export const Sidebar = styled.aside<{ $open: boolean; $expanded: boolean }>`
       : css`
           // Closed styles.
           width: 0;
+
+          h3 {
+            display: none;
+          }
+
+          div {
+            background: transparent;
+          }
+
+          ${ThumbnailViewer} {
+            width: 0;
+          }
         `}
 `;
 
 export const Main = styled.div`
-  flex: 1 1 0px;
+  flex: 1 1 0;
   display: flex;
   min-width: 0;
 `;
@@ -50,4 +62,3 @@ export const Actions = styled.div`
   transform: translate(0, -50%);
   z-index: 12;
 `;
-

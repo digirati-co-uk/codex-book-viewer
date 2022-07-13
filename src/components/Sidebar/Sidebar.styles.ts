@@ -1,6 +1,6 @@
-import { greyBg, serif, whiteText } from '../../tokens';
+import { greyBg, greyBg2, serif, whiteText } from "../../tokens";
 import styled from 'styled-components';
-import { ChevronBarRight, ChevronRight  } from '@styled-icons/bootstrap';
+import { ChevronBarRight, ChevronRight } from '@styled-icons/bootstrap';
 
 export const Container = styled.div`
   background: ${greyBg};
@@ -31,7 +31,7 @@ export const Buttons = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: white;
+  background-color: ${greyBg2};
   border: none;
   width: 25px;
   height: 25px;
@@ -39,35 +39,12 @@ export const Button = styled.button`
   left: 95%;
   z-index: 12;
   top: 10%;
-`;
-
-export const Open = styled(ChevronRight)`
-  border-radius: 5px;
-  color: #31738e;
-  width: 18px;
-  height: 18px;
-  z-index: 12;
-`;
-export const Close = styled(ChevronRight)`
-  border-radius: 5px;
-  color: #31738e;
-  width: 18px;
-  height: 18px;
-  z-index: 12;
-  transform: rotate(180deg);
-`;
-export const Expand = styled(ChevronBarRight)`
-  border-radius: 5px;
-  color: #31738e;
-  width: 18px;
-  height: 18px;
-  z-index: 12;
-`;
-export const Minimise = styled(ChevronBarRight)`
-  border-radius: 5px;
-  color: #31738e;
-  width: 18px;
-  height: 18px; 
-  z-index: 12;
-  transform: rotate(180deg);
+  margin: 5px;
+  
+  svg {
+    color: white;
+    width: 18px;
+    height: 18px;
+    z-index: 12;
+  }
 `;

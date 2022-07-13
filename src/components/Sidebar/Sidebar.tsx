@@ -1,8 +1,8 @@
-import { Container, Heading, Content, Buttons, Button, Close, Open, Minimise, Expand } from './Sidebar.styles';
+import { Container, Heading, Content, Buttons, Button} from './Sidebar.styles';
 import { useTranslation } from 'react-i18next';
 import { ReactElement } from 'react';
 import { useGridContext, useGridState } from '../Grid/Grid.context';
-
+import { ChevronLeft, ChevronDoubleLeft, ChevronRight, ChevronDoubleRight} from '@styled-icons/heroicons-solid';
 interface SidebarProps {
   children: ReactElement;
 }
@@ -11,7 +11,7 @@ export function Sidebar({ children }: SidebarProps) {
   const { t } = useTranslation();
   const gridActions = useGridContext();
   const gridState = useGridState();
-  console.log(gridState);
+
 
   return (
     <Container>
@@ -24,7 +24,7 @@ export function Sidebar({ children }: SidebarProps) {
               gridActions.closeLeftPanel();
             }}
           >
-            <Close />
+            <ChevronLeft />
           </Button>
         ) : (
           <Button
@@ -32,7 +32,7 @@ export function Sidebar({ children }: SidebarProps) {
               gridActions.openLeftPanel();
             }}
           >
-            <Open />
+            <ChevronRight />
           </Button>
         )}
 
@@ -42,7 +42,7 @@ export function Sidebar({ children }: SidebarProps) {
               gridActions.minimiseLeftPanel();
             }}
           >
-            <Minimise />
+            <ChevronDoubleLeft />
           </Button>
         ) : (
           <Button
@@ -50,7 +50,7 @@ export function Sidebar({ children }: SidebarProps) {
               gridActions.expandLeftPanel();
             }}
           >
-            <Expand />
+            <ChevronDoubleRight />
           </Button>
         )}
       </Buttons>
