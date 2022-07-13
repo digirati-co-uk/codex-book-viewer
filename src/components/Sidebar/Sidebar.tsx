@@ -22,6 +22,7 @@ export function Sidebar({ children }: SidebarProps) {
           <Button
             onClick={() => {
               gridActions.closeLeftPanel();
+              gridActions.minimiseLeftPanel();
             }}
           >
             <ChevronLeft />
@@ -47,6 +48,7 @@ export function Sidebar({ children }: SidebarProps) {
         ) : (
           <Button
             onClick={() => {
+              gridActions.openLeftPanel();
               gridActions.expandLeftPanel();
             }}
           >

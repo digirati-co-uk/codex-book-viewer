@@ -19,8 +19,6 @@ export const FloatingContainer = styled.div`
 export const Container = styled.div`
   background: ${greyBg};
   border-radius: 1.5em;
-  height: 40px;
-  width: 40vw;
   display: flex;
   justify-content: center;
   align-content: center;

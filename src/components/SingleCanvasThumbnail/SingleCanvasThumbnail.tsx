@@ -1,6 +1,7 @@
-import { useCanvas, useThumbnail } from "react-iiif-vault";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
-import { ThumbnailImage, ThumbnailPlaceholder, ThumbnailTitle } from "../ThumbnailPagedList/ThumbnailPageList.styles";
+import { useCanvas, useThumbnail } from 'react-iiif-vault';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import { ThumbnailImage, ThumbnailPlaceholder, ThumbnailTitle } from '../ThumbnailPagedList/ThumbnailPageList.styles';
+import { getValue } from '@iiif/vault-helpers';
 
 export function SingleCanvasThumbnail({ size }: { size: number }) {
   const thumbnail = useThumbnail({
@@ -8,17 +9,15 @@ export function SingleCanvasThumbnail({ size }: { size: number }) {
     height: size,
   });
   const canvas = useCanvas();
+  const title = canvas.summary ? getValue(canvas.summary) : getValue(canvas.label);
 
   if (!thumbnail) {
     return <ThumbnailPlaceholder />;
   }
-
   return (
     <LazyLoadComponent threshold={800} style={{ height: size, width: size }}>
       <Inner size={size} />
-      <ThumbnailTitle>
-        Book {canvas.metadata[1].value.en}, Folio {canvas.metadata[2].value.en}
-      </ThumbnailTitle>
+      <ThumbnailTitle>{title}</ThumbnailTitle>
     </LazyLoadComponent>
   );
 }
@@ -26,10 +25,10 @@ export function SingleCanvasThumbnail({ size }: { size: number }) {
 function Inner({ size }: { size: number }) {
   const thumbnail = useThumbnail({
     width: size,
-    height: size
+    height: size,
   });
 
-  if (!thumbnail || thumbnail.type !== "fixed") {
+  if (!thumbnail || thumbnail.type !== 'fixed') {
     return <ThumbnailPlaceholder />;
   }
 

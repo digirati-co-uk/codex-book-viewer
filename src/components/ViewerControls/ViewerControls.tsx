@@ -20,9 +20,7 @@ interface ViewerControlsProps {
 
 export function ViewerControls(props: ViewerControlsProps) {
   const canvas = useCanvas();
-  const manifest = useManifest();
-  const { totalCanvases, currentCanvasIndex, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
-  // const [cachedValue, setCachedValue] = useState(currentCanvasIndex);
+  const { totalCanvases, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
   const [cachedFolio, setCachedFolio] = useState(null);
 
   useEffect(() => {
@@ -32,10 +30,6 @@ export function ViewerControls(props: ViewerControlsProps) {
   useEffect(() => {
     setCurrentCanvasIndex(props.initCanvas);
   }, []);
-
-  // useEffect(() => {
-  //   setCachedValue(currentCanvasIndex + 1);
-  // }, [currentCanvasIndex]);
 
   return (
     <FloatingContainerOuter>
@@ -50,12 +44,6 @@ export function ViewerControls(props: ViewerControlsProps) {
           <CentralContainer>
             <InputLabel>Folio </InputLabel>
             <InputLabel>{cachedFolio}</InputLabel>
-            {/*<Input*/}
-            {/*  type="text"*/}
-            {/*  value={cachedFolio}*/}
-            {/*  onChange={(e) => setCachedFolio(e.currentTarget)}*/}
-            {/*  onBlur={(e) => setCurrentCanvasIndex(e.currentTarget.valueAsNumber - 1)}*/}
-            {/*/>*/}
             <TextContainer>of</TextContainer>
             <TextContainer>
               <strong>{totalCanvases}</strong>

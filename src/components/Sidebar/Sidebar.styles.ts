@@ -1,4 +1,4 @@
-import { greyBg, greyBg2, serif, whiteText } from "../../tokens";
+import { greyBg, greyBg2, highlight, serif, whiteText } from '../../tokens';
 import styled from 'styled-components';
 import { ChevronBarRight, ChevronRight } from '@styled-icons/bootstrap';
 
@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Heading = styled.h3`
-  font-size: 18px;
+  font-size: 1.125em;
   font-family: ${serif};
   text-rendering: geometricPrecision;
   font-weight: 400;
@@ -36,12 +36,19 @@ export const Button = styled.button`
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  left: 95%;
   z-index: 12;
-  top: 10%;
   margin: 5px;
-  
+  cursor: pointer;
+
+  :hover {
+    background-color: ${highlight};
+  }
+
+  :focus {
+    border: 1px solid ${highlight};
+  }
   svg {
+    align-items: center;
     color: white;
     width: 18px;
     height: 18px;

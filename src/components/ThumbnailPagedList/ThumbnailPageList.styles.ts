@@ -41,7 +41,6 @@ export const ThumbnailImage = styled(LazyLoadImage)`
   object-position: center;
   width: 128px;
   height: 172px;
-  border-radius: 15px;
 `;
 
 export const ThumbnailViewer = styled.div`
@@ -55,7 +54,7 @@ export const ThumbnailViewer = styled.div`
   justify-items: center;
 `;
 export const ThumbnailTitle = styled.h2`
-  font-size: 12px;
+  font-size: 0.75em;
   font-weight: 400;
   font-family: ${serif};
   text-rendering: geometricPrecision;

@@ -3,8 +3,6 @@ import { highlight } from '../../tokens';
 
 export const Container = styled.div`
   background-color: #2a3037;
-  width: 50px;
-  min-height: 550px;
   border-radius: 15px 0 0 15px;
   color: white;
   display: flex;
@@ -15,13 +13,11 @@ export const LayoutBtn = styled.button<{ selected: string; id: string }>`
   background-color: transparent;
   border: none;
   width: 30px;
-  height: 15px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 10px 5px;
-  padding: 0;
+  padding: 0.5em 0;
   cursor: pointer;
 
   :hover div {
@@ -38,63 +34,60 @@ export const LayoutBtn = styled.button<{ selected: string; id: string }>`
 `;
 
 export const Layout = styled.div`
-  padding: 10px 0;
-  position: relative;
+  padding: 1em 0;
   height: auto;
-
-  :after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 150%;
-    padding: 0;
-    left: -5px;
-    right: 0;
-    bottom: 0;
-    top: 110%;
-    background-color: rgba(234, 234, 235, 0.18);
-  }
 `;
 
 export const Zoom = styled.div`
-  padding: 10px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+  align-items: center;
+  justify-content: center;
+`;
+export const Slider = styled.input`
+  -webkit-appearance: none;
+  transform: rotate(270deg);
+  width: 80px;
+  height: 2px;
+  background: white;
+  outline: none;
+  margin: 40px 0;
 
-  :after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 150%;
-    padding: 0;
-    left: -5px;
-    right: 0;
-    bottom: 0;
-    top: 100%;
-    background-color: rgba(234, 234, 235, 0.18);
+  ::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
+  }
+
+  ::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
+
   }
 `;
 export const IconButton = styled.button`
-  position: relative;
   background-color: transparent;
   border: none;
   color: white;
   cursor: pointer;
-  width: 30px;
+  width: 25px;
   margin: 10px;
+  padding: 1em 0;
   :hover {
     color: #8bcfd7;
   }
-  :after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 55px;
-    padding: 0;
-    left: -10px;
-    right: 0;
-    bottom: 0;
-    top: 150%;
-    background-color: rgba(234, 234, 235, 0.18);
+  :focus {
+    border: 1px solid ${highlight};
   }
 `;
 
@@ -104,4 +97,11 @@ export const Icon = styled.div`
   background-color: white;
   border-radius: 2px;
   margin: 1px;
+`;
+
+export const Divider = styled.div`
+  height: 1px;
+  width: 55px;
+  margin: 1em 0;
+  background-color: rgba(234, 234, 235, 0.18);
 `;
