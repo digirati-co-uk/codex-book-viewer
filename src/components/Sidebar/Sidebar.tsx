@@ -5,11 +5,9 @@ import { useGridContext, useGridState } from '../Grid/Grid.context';
 
 interface SidebarProps {
   children: ReactElement;
-  open: boolean;
-  expanded: boolean;
 }
 
-export function Sidebar(props: SidebarProps) {
+export function Sidebar({ children }: SidebarProps) {
   const { t } = useTranslation();
   const gridActions = useGridContext();
   const gridState = useGridState();
@@ -18,7 +16,7 @@ export function Sidebar(props: SidebarProps) {
   return (
     <Container>
       <Heading>{t('Page Thumbnails')}</Heading>
-      <Content>{props.children}</Content>
+      <Content>{children}</Content>
       <Buttons>
         {gridState.open ? (
           <Button

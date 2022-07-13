@@ -46,4 +46,8 @@ export const Main = styled.div`
 export const Actions = styled.div`
   position: absolute;
   right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 12;
 `;
+
