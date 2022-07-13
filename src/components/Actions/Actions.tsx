@@ -1,5 +1,7 @@
-import { Container, Layout, Zoom, Print, Cite, LayoutBtn, Icon } from './Actions.styles';
+import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton } from "./Actions.styles";
 import { useState } from 'react';
+import { Printer } from '@styled-icons/feather/Printer';
+import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
 
 export function Actions() {
   const [selected, setSelected] = useState('1');
@@ -36,9 +38,15 @@ export function Actions() {
         </LayoutBtn>
       </Layout>
 
-      <Zoom>Zoom</Zoom>
-      <Print>Print</Print>
-      <Cite>Cite</Cite>
+      <Zoom>+ - </Zoom>
+
+      <IconButton>
+        <Printer />
+      </IconButton>
+
+      <IconButton>
+        <QuoteAltLeft />
+      </IconButton>
     </Container>
   );
 }
