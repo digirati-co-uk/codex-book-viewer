@@ -1,4 +1,4 @@
-import { useSimpleViewer } from 'react-iiif-vault';
+import { useCanvas, useManifest, useSimpleViewer, useVisibleCanvases } from "react-iiif-vault";
 import {
   ButtonIcon,
   Button,
@@ -14,13 +14,22 @@ import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useState } from 'react';
 
-export function ViewerControls() {
-  const { totalCanvases, currentCanvasIndex, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
-  const [cachedValue, setCachedValue] = useState(currentCanvasIndex);
+interface ViewerControlsProps {
+  initCanvas: number;
+}
+
+export function ViewerControls(props: ViewerControlsProps) {
+  const canvas = useCanvas();
+  const { totalCanvases, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
+  const [cachedFolio, setCachedFolio] = useState(null);
 
   useEffect(() => {
-    setCachedValue(currentCanvasIndex + 1);
-  }, [currentCanvasIndex]);
+    canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
+  }, [canvas]);
+
+  useEffect(() => {
+    setCurrentCanvasIndex(props.initCanvas);
+  }, []);
 
   return (
     <FloatingContainerOuter>
@@ -33,13 +42,8 @@ export function ViewerControls() {
             Previous
           </Button>
           <CentralContainer>
-            <InputLabel>Page</InputLabel>
-            <Input
-              type="number"
-              value={cachedValue}
-              onChange={(e) => setCachedValue(e.currentTarget.valueAsNumber)}
-              onBlur={(e) => setCurrentCanvasIndex(e.currentTarget.valueAsNumber - 1)}
-            />
+            <InputLabel>Folio </InputLabel>
+            <InputLabel>{cachedFolio}</InputLabel>
             <TextContainer>of</TextContainer>
             <TextContainer>
               <strong>{totalCanvases}</strong>

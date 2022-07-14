@@ -4,9 +4,11 @@ import { VaultProvider } from 'react-iiif-vault';
 import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPagedList';
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
+import { Actions } from "./components/Actions/Actions";
 
 interface GettyViewerProps {
   manifest: string;
+  initCanvas: number;
 }
 
 export function GettyViewer(props: GettyViewerProps) {
@@ -19,9 +21,9 @@ export function GettyViewer(props: GettyViewerProps) {
               <ThumbnailPagedList />
             </Sidebar>
           }
-          actions={<div>actions</div>}
+          actions={<Actions />}
         >
-          <DeepZoomViewer />
+          <DeepZoomViewer initCanvas={props.initCanvas} />
         </Grid>
       </MainProvider>
     </VaultProvider>

@@ -1,20 +1,23 @@
-import { useThumbnail } from 'react-iiif-vault';
+import { useCanvas, useThumbnail } from 'react-iiif-vault';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import { ThumbnailImage, ThumbnailPlaceholder } from '../ThumbnailPagedList/ThumbnailPageList.styles';
+import { ThumbnailImage, ThumbnailPlaceholder, ThumbnailTitle } from '../ThumbnailPagedList/ThumbnailPageList.styles';
+import { getValue } from '@iiif/vault-helpers';
 
 export function SingleCanvasThumbnail({ size }: { size: number }) {
   const thumbnail = useThumbnail({
     width: size,
     height: size,
   });
+  const canvas = useCanvas();
+  const title = canvas.summary ? getValue(canvas.summary) : getValue(canvas.label);
 
   if (!thumbnail) {
     return <ThumbnailPlaceholder />;
   }
-
   return (
     <LazyLoadComponent threshold={800} style={{ height: size, width: size }}>
       <Inner size={size} />
+      <ThumbnailTitle>{title}</ThumbnailTitle>
     </LazyLoadComponent>
   );
 }

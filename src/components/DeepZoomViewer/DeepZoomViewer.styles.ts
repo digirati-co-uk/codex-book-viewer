@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { blackBg, serif, whiteText } from '../../tokens';
+import { blackBg2, serif, whiteText } from '../../tokens';
 
 export const Heading = styled.h1`
   font-size: 1.8em;
@@ -10,10 +10,11 @@ export const Heading = styled.h1`
   text-align: center;
   text-rendering: geometricPrecision;
   font-weight: 400;
+  z-index: 13;
 `;
 
 export const Container = styled.div`
-  background: ${blackBg};
+  background: ${blackBg2};
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -23,7 +24,7 @@ export const Container = styled.div`
 
 export const AtlasContainer = styled.div`
   display: flex;
-  flex: 1 1 0px;
+  flex: 1 1 0;
   flex-direction: column;
   min-width: 0;
 `;

@@ -24,7 +24,6 @@ export function ThumbnailPagedList() {
     <ThumbnailViewer>
       {manifest.items.map((canvasRef, idx) => {
         const canvas = vault.get<CanvasNormalized>(canvasRef);
-
         const T = canvas.behavior.indexOf('non-paged') !== -1 || idx === 0 ? ThumbnailCover : Thumbnail;
 
         return (
@@ -34,7 +33,9 @@ export function ThumbnailPagedList() {
               onClick={() => setCurrentCanvasId(canvas.id)}
               data-canvas-thumbnail-index={idx}
             >
-              <SingleCanvasThumbnail size={128} />
+              <SingleCanvasThumbnail
+                size={128}
+              />
             </T>
           </CanvasContext>
         );
