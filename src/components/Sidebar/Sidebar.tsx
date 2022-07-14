@@ -1,8 +1,10 @@
-import { Container, Heading, Content, Buttons, Button} from './Sidebar.styles';
+import { Container, Heading, Content, Buttons, Button } from './Sidebar.styles';
 import { useTranslation } from 'react-i18next';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { useGridContext, useGridState } from '../Grid/Grid.context';
-import { ChevronLeft, ChevronDoubleLeft, ChevronRight, ChevronDoubleRight} from '@styled-icons/heroicons-solid';
+import { ChevronLeft, ChevronDoubleLeft, ChevronRight, ChevronDoubleRight } from '@styled-icons/heroicons-solid';
+import { useIsMobile } from '../../hooks/useIsMobile';
+
 interface SidebarProps {
   children: ReactElement;
 }
@@ -11,40 +13,52 @@ export function Sidebar({ children }: SidebarProps) {
   const { t } = useTranslation();
   const gridActions = useGridContext();
   const gridState = useGridState();
-
+  const mobile = useIsMobile(500);
 
   return (
     <Container>
       <Heading>{t('Page Thumbnails')}</Heading>
       <Content>{children}</Content>
       <Buttons>
-        {gridState.open ? (
-          <Button
-            onClick={() => {
-              gridActions.closeLeftPanel();
-              gridActions.minimiseLeftPanel();
-            }}
-          >
-            <ChevronLeft />
-          </Button>
-        ) : (
-          <Button
-            onClick={() => {
-              gridActions.openLeftPanel();
-            }}
-          >
-            <ChevronRight />
-          </Button>
-        )}
+        {!mobile &&
+          (gridState.open ? (
+            <Button
+              onClick={() => {
+                gridActions.minimiseLeftPanel();
+                gridActions.closeLeftPanel();
+              }}
+            >
+              <ChevronLeft />
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                gridActions.openLeftPanel();
+              }}
+            >
+              <ChevronRight />
+            </Button>
+          ))}
 
         {gridState.expanded ? (
-          <Button
-            onClick={() => {
-              gridActions.minimiseLeftPanel();
-            }}
-          >
-            <ChevronDoubleLeft />
-          </Button>
+          mobile ? (
+            <Button
+              onClick={() => {
+                gridActions.minimiseLeftPanel();
+                gridActions.closeLeftPanel();
+              }}
+            >
+              <ChevronDoubleLeft />
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                gridActions.minimiseLeftPanel();
+              }}
+            >
+              <ChevronDoubleLeft />
+            </Button>
+          )
         ) : (
           <Button
             onClick={() => {

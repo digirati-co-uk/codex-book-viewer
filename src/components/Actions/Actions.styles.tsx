@@ -8,6 +8,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 50px;
+  }
 `;
 export const LayoutBtn = styled.button<{ selected: string; id: string }>`
   background-color: transparent;
@@ -44,6 +47,10 @@ export const Zoom = styled.div`
   font-size: 2em;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.5em;
+  }
 `;
 export const Slider = styled.input`
   -webkit-appearance: none;
@@ -53,7 +60,7 @@ export const Slider = styled.input`
   background: white;
   outline: none;
   margin: 40px 0;
-
+    
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -72,7 +79,6 @@ export const Slider = styled.input`
     background: white;
     cursor: pointer;
     box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
-
   }
 `;
 export const IconButton = styled.button`
@@ -83,6 +89,13 @@ export const IconButton = styled.button`
   width: 25px;
   margin: 10px;
   padding: 1em 0;
+
+  @media screen and (max-width: 500px) {
+    width: 20px;
+    margin: 5px;
+    padding: 1em 0;
+  }
+  
   :hover {
     color: #8bcfd7;
   }
@@ -104,4 +117,8 @@ export const Divider = styled.div`
   width: 55px;
   margin: 1em 0;
   background-color: rgba(234, 234, 235, 0.18);
+
+  @media screen and (max-width: 500px) {
+    margin: 0;
+  }
 `;

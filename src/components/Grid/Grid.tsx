@@ -1,6 +1,7 @@
 import { ReactElement, Reducer, useMemo, useReducer } from 'react';
 import { Main, Sidebar, Container, Actions } from './Grid.styles';
 import { GridContext, GridReactContext, GridStateReactContext } from './Grid.context';
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 type GridProps = {
   sidebar: ReactElement;
@@ -12,7 +13,7 @@ const toggle: Reducer<boolean, boolean | undefined> = (a, b = !a) => b;
 
 export function Grid(props: GridProps) {
   const [expanded, setExpanded] = useReducer(toggle, false);
-  const [open, setOpen] = useReducer(toggle, true);
+  const [open, setOpen] = useReducer(toggle, !useIsMobile(500));
 
   const value = useMemo(() => {
     return {
