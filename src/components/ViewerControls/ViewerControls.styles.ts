@@ -4,6 +4,7 @@ import { blackBg, greyBg, greyBg2, whiteText } from '../../tokens';
 export const FloatingContainerOuter = styled.div`
   position: relative;
   width: 100%;
+
 `;
 
 export const FloatingContainer = styled.div`
@@ -64,6 +65,10 @@ export const CentralContainer = styled.div`
   justify-content: center;
   align-content: center;
   align-self: center;
+
+  @media screen and (max-width: 500px) {
+    margin: 0 0.75em;
+  }
 `;
 
 export const InputLabel = styled.label`
