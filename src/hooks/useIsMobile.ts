@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 
 export const useIsMobile = (breakpoint: number) => {
-  const [width, setWidth] = useState(globalThis?.window?.innerWidth);
+
+  const [isMatch, setIsMatch] = useState(globalThis?.window?.innerWidth < breakpoint);
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleWindowResize);
-    return () => window.removeEventListener('resize', handleWindowResize);
-  }, [width]);
+    const match = window.matchMedia(`(max-width: ${breakpoint}px)`);
 
-  if (width < breakpoint) {
-    return true;
-  }
+    function onChange() {
+      setIsMatch(match.matches);
+    }
+
+    match.addEventListener('change', onChange);
+    return () => match.removeEventListener('change', onChange);
+  }, [breakpoint]);
+
+  return isMatch;
 };

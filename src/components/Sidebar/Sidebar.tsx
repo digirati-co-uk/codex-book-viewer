@@ -15,13 +15,6 @@ export function Sidebar({ children }: SidebarProps) {
   const gridState = useGridState();
   const mobile = useIsMobile(500);
 
-  useEffect(() => {
-    if (mobile) {
-      gridActions.minimiseLeftPanel();
-      gridActions.closeLeftPanel();
-    }
-  }, []);
-
   return (
     <Container>
       <Heading>{t('Page Thumbnails')}</Heading>
