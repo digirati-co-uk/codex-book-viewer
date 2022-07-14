@@ -1,11 +1,15 @@
 import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider } from './Actions.styles';
-import { useState } from 'react';
+import { useState } from "react";
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
 
-export function Actions() {
+interface ActionsProps {
+  zoom: string;
+  onZoom: (arg: string) => void;
+}
+
+export function Actions(props: ActionsProps) {
   const [selected, setSelected] = useState('1');
-  const [zoom, setZoom] = useState(1);
 
   return (
     <Container>
@@ -42,7 +46,15 @@ export function Actions() {
       <Divider />
 
       <Zoom>
-        +<Slider type="range" min={1} max={100} value={zoom} onChange={(e) => setZoom(e.target.value)}></Slider>-
+        +
+        <Slider
+          type="range"
+          min={1}
+          max={100}
+          value={props.zoom}
+          onChange={(e) => props.onZoom(e.target.value)}
+        ></Slider>
+        -
       </Zoom>
       <Divider />
       <IconButton>
