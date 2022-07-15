@@ -44,7 +44,7 @@ export function Actions(props: ActionsProps) {
         >
           +
         </ZoomBtn>
-        <Slider type="range" min={1} max={1000} value={500}></Slider>
+        <Slider type="range" min={1} max={1000}></Slider>
 
         <ZoomBtn
           onClick={() => {

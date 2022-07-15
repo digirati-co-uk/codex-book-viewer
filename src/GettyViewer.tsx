@@ -13,7 +13,7 @@ interface GettyViewerProps {
 
 export function GettyViewer(props: GettyViewerProps) {
   const handleZoom = (): void => {
-    console.log('hi');
+    console.log('zoomed');
   };
   return (
     <VaultProvider>

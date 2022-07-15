@@ -23,9 +23,9 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
     acc += canvas.width;
 
     return (
-        <CanvasContext key={canvas.id} canvas={canvas.id} >
-        <AtlasCanvas key={canvas.id} x={x} />
-        </CanvasContext>
+      <CanvasContext key={canvas.id} canvas={canvas.id}>
+        <AtlasCanvas key={canvas.id} x={x} onCreated={(preset) => void (runtime.current = preset.runtime)} />
+      </CanvasContext>
     );
   });
 
@@ -42,7 +42,7 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
       `}</style>
       <AtlasContainer>
         <Viewer>{canvasComponents}</Viewer>
-        <button onClick={doZoomIn}>zoom in</button>
+        <button onClick={doZoomOut}>zoom in</button>
       </AtlasContainer>
     </Container>
   );
