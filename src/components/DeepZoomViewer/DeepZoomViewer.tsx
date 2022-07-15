@@ -1,26 +1,21 @@
-import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
-import { CanvasContext, ContextBridge, useContextBridge, useVisibleCanvases } from 'react-iiif-vault';
-import { ViewerControls } from '../ViewerControls/ViewerControls';
-import { blackBg2 } from '../../tokens';
-import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
-import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
-import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
-import { ReactNode, useEffect, useRef } from 'react';
+import { AtlasContainer, Container, Heading } from "./DeepZoomViewer.styles";
+import { CanvasContext, ContextBridge, useContextBridge, useVisibleCanvases } from "react-iiif-vault";
+import { ViewerControls } from "../ViewerControls/ViewerControls";
+import { blackBg2 } from "../../tokens";
+import { AtlasAuto, Runtime } from "@atlas-viewer/atlas";
+import { AtlasCanvas } from "../../atlas-components/AtlasCanvas";
+import { VirtualAnnotationProvider } from "../../hooks/use-virtual-annotation-page-context";
+import { ReactNode, useRef } from "react";
 
 interface DeepZoomViewerProps {
-  n: boolean;
   initCanvas: number;
-  zoom: string;
 }
 
 export function DeepZoomViewer(props: DeepZoomViewerProps) {
   const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();
-
-  useEffect(() => {
-    const n = Number(props.zoom);
-    return runtime.current?.world.zoomTo(n);
-  }, [props.zoom]);
+  const doZoomIn = () => runtime.current?.world.zoomTo(0.75);
+  const doZoomOut = () => runtime.current?.world.zoomTo(1 / 0.75);
 
   let acc = 0;
   const canvasComponents = canvases.map((canvas) => {
@@ -28,9 +23,9 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
     acc += canvas.width;
 
     return (
-      <CanvasContext key={canvas.id} canvas={canvas.id}>
-        <AtlasCanvas key={canvas.id} x={x} onCreated={(preset) => void (runtime.current = preset.runtime)} />
-      </CanvasContext>
+        <CanvasContext key={canvas.id} canvas={canvas.id} >
+        <AtlasCanvas key={canvas.id} x={x} />
+        </CanvasContext>
     );
   });
 
@@ -47,6 +42,7 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
       `}</style>
       <AtlasContainer>
         <Viewer>{canvasComponents}</Viewer>
+        <button onClick={doZoomIn}>zoom in</button>
       </AtlasContainer>
     </Container>
   );

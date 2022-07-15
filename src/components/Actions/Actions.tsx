@@ -1,11 +1,11 @@
-import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider } from './Actions.styles';
-import { useState } from "react";
+import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider, ZoomBtn } from './Actions.styles';
+import { useState } from 'react';
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
 
 interface ActionsProps {
-  zoom: string;
-  onZoom: (arg: string) => void;
+  onZoomIn(): void;
+  onZoomOut(): void;
 }
 
 export function Actions(props: ActionsProps) {
@@ -32,29 +32,27 @@ export function Actions(props: ActionsProps) {
         >
           <Icon /> <Icon />
         </LayoutBtn>
-        <LayoutBtn
-          selected={selected}
-          id={'3'}
-          onClick={() => {
-            setSelected('3');
-          }}
-        >
-          <Icon /> <Icon /> <Icon /> <Icon />
-        </LayoutBtn>
       </Layout>
 
       <Divider />
 
       <Zoom>
-        +
-        <Slider
-          type="range"
-          min={1}
-          max={100}
-          value={props.zoom}
-          onChange={(e) => props.onZoom(e.target.value)}
-        ></Slider>
-        -
+        <ZoomBtn
+          onClick={() => {
+            props.onZoomOut();
+          }}
+        >
+          +
+        </ZoomBtn>
+        <Slider type="range" min={1} max={1000} value={500}></Slider>
+
+        <ZoomBtn
+          onClick={() => {
+            props.onZoomIn();
+          }}
+        >
+          -
+        </ZoomBtn>
       </Zoom>
       <Divider />
       <IconButton>

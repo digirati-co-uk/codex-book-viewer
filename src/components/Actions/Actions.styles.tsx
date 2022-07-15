@@ -44,12 +44,29 @@ export const Layout = styled.div`
 export const Zoom = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 2em;
   align-items: center;
   justify-content: center;
 
   @media screen and (max-width: 500px) {
     font-size: 1.5em;
+  }
+`;
+
+export const ZoomBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 2em;
+  border-radius: 25px;
+  cursor: pointer; 
+  
+  :hover {
+    color: #8bcfd7;
+  }
+  :focus {
+    border: 1px solid ${highlight};
+
+  }
   }
 `;
 export const Slider = styled.input`
@@ -68,7 +85,6 @@ export const Slider = styled.input`
     height: 13px;
     border-radius: 100%;
     background: white;
-    cursor: pointer;
     box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
   }
 
@@ -77,7 +93,6 @@ export const Slider = styled.input`
     height: 16px;
     border-radius: 100%;
     background: white;
-    cursor: pointer;
     box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
   }
 `;
