@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
 
-export function Actions() {
-  const [selected, setSelected] = useState('1');
+interface ActionsProps {
+  onLayout(s: string): void;
+}
+export function Actions(props: ActionsProps) {
+  const [selected, setSelected] = useState('2');
   const [zoom, setZoom] = useState(1);
 
   return (
@@ -14,6 +17,7 @@ export function Actions() {
           selected={selected}
           id={'1'}
           onClick={() => {
+            props.onLayout('1');
             setSelected('1');
           }}
         >
@@ -23,19 +27,11 @@ export function Actions() {
           selected={selected}
           id={'2'}
           onClick={() => {
+            props.onLayout('2');
             setSelected('2');
           }}
         >
           <Icon /> <Icon />
-        </LayoutBtn>
-        <LayoutBtn
-          selected={selected}
-          id={'3'}
-          onClick={() => {
-            setSelected('3');
-          }}
-        >
-          <Icon /> <Icon /> <Icon /> <Icon />
         </LayoutBtn>
       </Layout>
 
