@@ -2,13 +2,12 @@ import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
 import { CanvasContext, ContextBridge, useCanvas, useContextBridge, useVisibleCanvases } from 'react-iiif-vault';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
 import { blackBg2 } from '../../tokens';
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
 
-
-export const DeepZoomViewer = forwardRef((initCanvas: number, ref) => {
+export const DeepZoomViewer = forwardRef((initCanvas: number, ref: any) => {
   const bridge = useContextBridge();
   const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();

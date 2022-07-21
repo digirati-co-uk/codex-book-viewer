@@ -1,8 +1,8 @@
-import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider } from './Actions.styles';
+import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, ZoomBtn } from "./Actions.styles";
 import { useState } from 'react';
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
-import { ZoomIn, ZoomOut} from '@styled-icons/bootstrap';
+import { ZoomIn, ZoomOut } from '@styled-icons/bootstrap';
 import { ZoomOutMap } from '@styled-icons/material-sharp/ZoomOutMap';
 
 interface ActionsProps {
