@@ -1,4 +1,4 @@
-import { useCanvas, useSimpleViewer } from 'react-iiif-vault';
+import { useCanvas, useExternalManifest, useManifest, useSimpleViewer } from "react-iiif-vault";
 import {
   ButtonIcon,
   Button,
@@ -19,13 +19,23 @@ interface ViewerControlsProps {
 
 export function ViewerControls(props: ViewerControlsProps) {
   const canvas = useCanvas();
-  const { totalCanvases, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
+  const currentManifest = useManifest();
+  const { manifest, isLoaded } = useExternalManifest(currentManifest.id);
+  const { totalCanvases, nextCanvas, previousCanvas } = useSimpleViewer();
   const [cachedFolio, setCachedFolio] = useState(null);
+
+  //waiting for bugfix
+  // useEffect(() => {
+  //   setCurrentCanvasIndex(props.initCanvas)
+  // }, []);
 
   useEffect(() => {
     canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
-    setCurrentCanvasIndex(props.initCanvas);
   }, [canvas]);
+
+  if (!manifest || !isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <FloatingContainerOuter>

@@ -7,7 +7,7 @@ interface MainProviderProps {
   paging: boolean;
 }
 export function MainProvider(props: MainProviderProps) {
-  const { manifest, isLoaded } = useExternalManifest(props.manifest);
+  const { manifest, isLoaded } = useExternalManifest(props.manifest)
   // Fixes bug with react-iiif-vault where it shows a "something went wrong error".
   const resp = useExternalManifest(props.manifest);
 
