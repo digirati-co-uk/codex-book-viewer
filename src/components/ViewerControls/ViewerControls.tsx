@@ -24,16 +24,8 @@ export function ViewerControls(props: ViewerControlsProps) {
   const [cachedFolio, setCachedFolio] = useState(null);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    (async () => {
-      await props;
-      setCurrentCanvasIndex(props.initCanvas);
-    })();
-  }, []);
-
-  useEffect(() => {
     canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
+    setCurrentCanvasIndex(props.initCanvas);
   }, [canvas]);
 
   return (

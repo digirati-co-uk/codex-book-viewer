@@ -34,18 +34,18 @@ export function GettyViewer(props: GettyViewerProps) {
                 handleLayout(x);
               }}
               onZoomIn={() => {
-                zoom_ref.current.f(0.75);
+                zoom_ref.current.startZoom(0.75);
               }}
               onZoomOut={() => {
-                zoom_ref.current.f(1 / 0.75);
+                zoom_ref.current.startZoom(1 / 0.75);
               }}
               onReset={() => {
-                zoom_ref.current.f('home');
+                zoom_ref.current.resetZoom();
               }}
             />
           }
         >
-          <DeepZoomViewer initCanvas={props.initCanvas} ref={zoom_ref} />
+          <DeepZoomViewer ref={zoom_ref} initCanvas={props.initCanvas} />
         </Grid>
       </MainProvider>
     </VaultProvider>

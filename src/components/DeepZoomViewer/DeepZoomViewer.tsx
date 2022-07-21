@@ -1,20 +1,26 @@
 import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
-import { CanvasContext, ContextBridge, useCanvas, useContextBridge, useVisibleCanvases } from 'react-iiif-vault';
+import { CanvasContext, ContextBridge, useContextBridge, useVisibleCanvases } from 'react-iiif-vault';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
 import { blackBg2 } from '../../tokens';
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useLayoutEffect, useRef } from "react";
 import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
 
-export const DeepZoomViewer = forwardRef((initCanvas: number, ref: any) => {
+interface DeepZoomViewerProps {
+  initCanvas: number;
+}
+export const DeepZoomViewer = forwardRef((props: DeepZoomViewerProps, ref) => {
   const bridge = useContextBridge();
   const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();
 
   useImperativeHandle(ref, () => ({
-    f(v) {
-      v === 'home' ? runtime.current?.world.goHome() : runtime.current?.world.zoomTo(v);
+    startZoom(v) {
+      v && runtime.current?.world.zoomTo(v);
+    },
+    resetZoom() {
+      runtime.current?.world.goHome();
     },
   }));
 
@@ -33,7 +39,7 @@ export const DeepZoomViewer = forwardRef((initCanvas: number, ref: any) => {
   return (
     <Container>
       <Heading>Book 11 - book title</Heading>
-      <ViewerControls initCanvas={initCanvas} />
+      <ViewerControls initCanvas={props.initCanvas} />
       <style>{`
         .atlas-container {
           min-width: 0; 
