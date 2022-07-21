@@ -12,7 +12,7 @@ import {
 } from './ViewerControls.styles';
 import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 interface ViewerControlsProps {
   initCanvas: number;
@@ -22,6 +22,10 @@ export function ViewerControls(props: ViewerControlsProps) {
   const canvas = useCanvas();
   const { totalCanvases, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
   const [cachedFolio, setCachedFolio] = useState(null);
+
+  useLayoutEffect(() => {
+    setCurrentCanvasIndex(props.initCanvas);
+  }, [props.initCanvas]);
 
   useEffect(() => {
     canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
