@@ -6,9 +6,14 @@ interface MainProviderProps {
   children: ReactElement;
   paging: boolean;
 }
-export function MainProvider( props: MainProviderProps) {
+export function MainProvider(props: MainProviderProps) {
+  const { manifest, isLoaded } = useExternalManifest(props.manifest)
   // Fixes bug with react-iiif-vault where it shows a "something went wrong error".
   const resp = useExternalManifest(props.manifest);
+
+  if (!manifest || !isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   if (!resp.manifest) {
     return <div>Loading...</div>;
@@ -16,7 +21,11 @@ export function MainProvider( props: MainProviderProps) {
   resp.manifest.behavior = ['paged'];
 
   return (
-    <SimpleViewerProvider pagingEnabled={props.paging} manifest={props.manifest}>
+    <SimpleViewerProvider
+      key={props.paging ? 'paging' : 'non-paging'}
+      pagingEnabled={props.paging}
+      manifest={props.manifest}
+    >
       {props.children}
     </SimpleViewerProvider>
   );
