@@ -5,7 +5,7 @@ import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPag
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
 import { Actions } from './components/Actions/Actions';
-import { useRef } from "react";
+import { useState, useRef } from 'react';
 
 interface GettyViewerProps {
   manifest: string;
@@ -14,9 +14,14 @@ interface GettyViewerProps {
 
 export function GettyViewer(props: GettyViewerProps) {
   const zoom_ref = useRef(null);
+  const [paging, setPaging] = useState(true);
+
+  const handleLayout = (x: string) => {
+    x === '1' ? setPaging(false) : setPaging(true);
+  };
   return (
     <VaultProvider>
-      <MainProvider manifest={props.manifest}>
+      <MainProvider manifest={props.manifest} paging={paging}>
         <Grid
           sidebar={
             <Sidebar>
@@ -25,6 +30,9 @@ export function GettyViewer(props: GettyViewerProps) {
           }
           actions={
             <Actions
+              onLayout={(x) => {
+                handleLayout(x);
+              }}
               onZoomIn={() => {
                 zoom_ref.current.f(0.75);
               }}

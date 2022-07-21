@@ -1,4 +1,4 @@
-import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, ZoomBtn } from './Actions.styles';
+import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider } from './Actions.styles';
 import { useState } from 'react';
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
@@ -6,13 +6,13 @@ import { ZoomIn, ZoomOut} from '@styled-icons/bootstrap';
 import { ZoomOutMap } from '@styled-icons/material-sharp/ZoomOutMap';
 
 interface ActionsProps {
+  onLayout(s: string): void;
   onZoomIn(): void;
   onZoomOut(): void;
   onReset(): void;
 }
-
 export function Actions(props: ActionsProps) {
-  const [selected, setSelected] = useState('1');
+  const [selected, setSelected] = useState('2');
 
   return (
     <Container>
@@ -21,6 +21,7 @@ export function Actions(props: ActionsProps) {
           selected={selected}
           id={'1'}
           onClick={() => {
+            props.onLayout('1');
             setSelected('1');
           }}
         >
@@ -30,6 +31,7 @@ export function Actions(props: ActionsProps) {
           selected={selected}
           id={'2'}
           onClick={() => {
+            props.onLayout('2');
             setSelected('2');
           }}
         >
