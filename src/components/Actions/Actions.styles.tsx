@@ -56,46 +56,25 @@ export const ZoomBtn = styled.button`
   background-color: transparent;
   border: none;
   color: white;
-  font-size: 2em;
   border-radius: 25px;
-  cursor: pointer; 
-  
+  cursor: pointer;
+  padding: 010px;
+
+  svg {
+    height: 18px;
+  }
+
   :hover {
     color: #8bcfd7;
   }
+
   :focus {
     border: 1px solid ${highlight};
 
   }
-  }
+}
 `;
-export const Slider = styled.input`
-  -webkit-appearance: none;
-  transform: rotate(270deg);
-  width: 80px;
-  height: 2px;
-  background: white;
-  outline: none;
-  margin: 40px 0;
-    
-  ::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 13px;
-    height: 13px;
-    border-radius: 100%;
-    background: white;
-    box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
-  }
 
-  ::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 100%;
-    background: white;
-    box-shadow: inset 0 0 0 2px #2a3037, inset 0 0 0 6px rgb(255, 255, 255);
-  }
-`;
 export const IconButton = styled.button`
   background-color: transparent;
   border: none;
@@ -110,10 +89,11 @@ export const IconButton = styled.button`
     margin: 5px;
     padding: 1em 0;
   }
-  
+
   :hover {
     color: #8bcfd7;
   }
+
   :focus {
     border: 1px solid ${highlight};
   }

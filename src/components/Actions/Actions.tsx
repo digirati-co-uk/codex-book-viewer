@@ -1,11 +1,14 @@
-import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider, ZoomBtn } from './Actions.styles';
+import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, ZoomBtn } from './Actions.styles';
 import { useState } from 'react';
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
+import { ZoomIn, ZoomOut} from '@styled-icons/bootstrap';
+import { ZoomOutMap } from '@styled-icons/material-sharp/ZoomOutMap';
 
 interface ActionsProps {
   onZoomIn(): void;
   onZoomOut(): void;
+  onReset(): void;
 }
 
 export function Actions(props: ActionsProps) {
@@ -39,19 +42,26 @@ export function Actions(props: ActionsProps) {
       <Zoom>
         <ZoomBtn
           onClick={() => {
-            props.onZoomOut();
-          }}
-        >
-          +
-        </ZoomBtn>
-        <Slider type="range" min={1} max={1000}></Slider>
-
-        <ZoomBtn
-          onClick={() => {
             props.onZoomIn();
           }}
         >
-          -
+          <ZoomIn />
+        </ZoomBtn>
+
+        <ZoomBtn
+          onClick={() => {
+            props.onReset();
+          }}
+        >
+          <ZoomOutMap />
+        </ZoomBtn>
+
+        <ZoomBtn
+          onClick={() => {
+            props.onZoomOut();
+          }}
+        >
+          <ZoomOut />
         </ZoomBtn>
       </Zoom>
       <Divider />

@@ -5,6 +5,7 @@ import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPag
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
 import { Actions } from './components/Actions/Actions';
+import { useRef } from "react";
 
 interface GettyViewerProps {
   manifest: string;
@@ -12,9 +13,7 @@ interface GettyViewerProps {
 }
 
 export function GettyViewer(props: GettyViewerProps) {
-  const handleZoom = (): void => {
-    console.log('zoomed');
-  };
+  const zoom_ref = useRef(null);
   return (
     <VaultProvider>
       <MainProvider manifest={props.manifest}>
@@ -24,9 +23,21 @@ export function GettyViewer(props: GettyViewerProps) {
               <ThumbnailPagedList />
             </Sidebar>
           }
-          actions={<Actions onZoomIn={handleZoom} onZoomOut={handleZoom} />}
+          actions={
+            <Actions
+              onZoomIn={() => {
+                zoom_ref.current.f(0.75);
+              }}
+              onZoomOut={() => {
+                zoom_ref.current.f(1 / 0.75);
+              }}
+              onReset={() => {
+                zoom_ref.current.f('home');
+              }}
+            />
+          }
         >
-          <DeepZoomViewer initCanvas={props.initCanvas} />
+          <DeepZoomViewer initCanvas={props.initCanvas} ref={zoom_ref} />
         </Grid>
       </MainProvider>
     </VaultProvider>
