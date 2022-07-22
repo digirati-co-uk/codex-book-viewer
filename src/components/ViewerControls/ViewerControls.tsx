@@ -1,4 +1,4 @@
-import { useCanvas, useExternalManifest, useManifest, useSimpleViewer } from "react-iiif-vault";
+import { useCanvas, useExternalManifest, useManifest, useSimpleViewer } from 'react-iiif-vault';
 import {
   ButtonIcon,
   Button,
@@ -11,7 +11,7 @@ import {
 } from './ViewerControls.styles';
 import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 interface ViewerControlsProps {
   initCanvas: number;
@@ -21,13 +21,12 @@ export function ViewerControls(props: ViewerControlsProps) {
   const canvas = useCanvas();
   const currentManifest = useManifest();
   const { manifest, isLoaded } = useExternalManifest(currentManifest.id);
-  const { totalCanvases, nextCanvas, previousCanvas } = useSimpleViewer();
+  const { totalCanvases, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
   const [cachedFolio, setCachedFolio] = useState(null);
 
-  //waiting for bugfix
-  // useEffect(() => {
-  //   setCurrentCanvasIndex(props.initCanvas)
-  // }, []);
+  useLayoutEffect(() => {
+    setCurrentCanvasIndex(props.initCanvas);
+  }, [props.initCanvas]);
 
   useEffect(() => {
     canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
