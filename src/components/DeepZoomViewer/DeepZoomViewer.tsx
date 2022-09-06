@@ -24,6 +24,8 @@ interface DeepZoomViewerProps {
 
 export function DeepZoomViewer(props: DeepZoomViewerProps) {
   const canvases = useVisibleCanvases();
+  const manifest = useManifest();
+  const title = manifest.label.en;
 
   let acc = 0;
   const canvasComponents = canvases.map((canvas) => {
@@ -39,7 +41,7 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
 
   return (
     <Container>
-      <Heading>Book 11 - book title</Heading>
+      <Heading>{title}</Heading>
       <ViewerControls initCanvas={props.initCanvas} />
       <style>{`
         .atlas-container {

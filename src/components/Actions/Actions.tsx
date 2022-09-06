@@ -41,13 +41,6 @@ export function Actions(props: ActionsProps) {
         +<Slider type="range" min={1} max={100} value={zoom} onChange={(e) => setZoom(e.target.value)}></Slider>-
       </Zoom>
       <Divider />
-      <IconButton>
-        <Printer />
-      </IconButton>
-      <Divider />
-      <IconButton>
-        <QuoteAltLeft />
-      </IconButton>
     </Container>
   );
 }

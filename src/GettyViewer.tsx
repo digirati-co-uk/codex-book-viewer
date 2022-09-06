@@ -4,8 +4,8 @@ import { VaultProvider } from 'react-iiif-vault';
 import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPagedList';
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
-import { Actions } from "./components/Actions/Actions";
-import { useState } from "react";
+import { Actions } from './components/Actions/Actions';
+import { useState } from 'react';
 
 interface GettyViewerProps {
   manifest: string;
