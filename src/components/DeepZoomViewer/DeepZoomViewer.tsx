@@ -3,18 +3,28 @@ import { CanvasContext, ContextBridge, useContextBridge, useManifest, useVisible
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
 import { blackBg2 } from '../../tokens';
-import { AtlasAuto } from '@atlas-viewer/atlas';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
-import { ReactNode } from 'react';
 
 interface DeepZoomViewerProps {
   initCanvas: number;
 }
-
-export function DeepZoomViewer(props: DeepZoomViewerProps) {
+export const DeepZoomViewer = forwardRef((props: DeepZoomViewerProps, ref) => {
+  const bridge = useContextBridge();
+  const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();
   const manifest = useManifest();
+
+  useImperativeHandle(ref, () => ({
+    startZoom(v) {
+      v && runtime.current?.world.zoomTo(v);
+    },
+    resetZoom() {
+      runtime.current?.world.goHome();
+    },
+  }));
 
   let acc = 0;
   const canvasComponents = canvases.map((canvas) => {
@@ -39,21 +49,14 @@ export function DeepZoomViewer(props: DeepZoomViewerProps) {
           --atlas-background:  ${blackBg2};
         }
       `}</style>
+
       <AtlasContainer>
-        <Viewer>{canvasComponents}</Viewer>
+        <AtlasAuto onCreated={(preset) => void (runtime.current = preset.runtime)}>
+          <ContextBridge bridge={bridge}>
+            <VirtualAnnotationProvider>{canvasComponents}</VirtualAnnotationProvider>
+          </ContextBridge>
+        </AtlasAuto>
       </AtlasContainer>
     </Container>
   );
-}
-
-function Viewer({ children }: { children: ReactNode }) {
-  const bridge = useContextBridge();
-
-  return (
-    <AtlasAuto>
-      <ContextBridge bridge={bridge}>
-        <VirtualAnnotationProvider>{children}</VirtualAnnotationProvider>
-      </ContextBridge>
-    </AtlasAuto>
-  );
-}
+});
