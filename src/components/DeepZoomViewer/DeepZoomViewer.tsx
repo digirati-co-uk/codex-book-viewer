@@ -7,6 +7,7 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
+import { getValue } from "@iiif/vault-helpers";
 
 interface DeepZoomViewerProps {
   initCanvas: number;
@@ -40,7 +41,9 @@ export const DeepZoomViewer = forwardRef((props: DeepZoomViewerProps, ref) => {
 
   return (
     <Container>
-      <LocaleString as={Heading}>{manifest.label}</LocaleString>
+      <LocaleString as={Heading}>
+        {canvases[0].metadata[1].label.en + ' ' + canvases[0].metadata[1].value.en + ', ' + canvases[0].label.en}{' '}
+      </LocaleString>
       <ViewerControls initCanvas={props.initCanvas} />
       <style>{`
         .atlas-container {

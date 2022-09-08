@@ -10,6 +10,7 @@ import { useState, useRef } from 'react';
 interface GettyViewerProps {
   manifest: string;
   initCanvas: number;
+  range: string;
 }
 
 export function GettyViewer(props: GettyViewerProps) {
@@ -21,7 +22,7 @@ export function GettyViewer(props: GettyViewerProps) {
   };
   return (
     <VaultProvider>
-      <MainProvider manifest={props.manifest} paging={paging}>
+      <MainProvider manifest={props.manifest} paging={paging} range={props.range}>
         <Grid
           sidebar={
             <Sidebar>

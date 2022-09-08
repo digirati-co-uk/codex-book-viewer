@@ -33,9 +33,7 @@ export function ThumbnailPagedList() {
               onClick={() => setCurrentCanvasId(canvas.id)}
               data-canvas-thumbnail-index={idx}
             >
-              <SingleCanvasThumbnail
-                size={128}
-              />
+              <SingleCanvasThumbnail size={128} />
             </T>
           </CanvasContext>
         );

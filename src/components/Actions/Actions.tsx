@@ -66,7 +66,6 @@ export function Actions(props: ActionsProps) {
           <ZoomOut />
         </ZoomBtn>
       </Zoom>
-      <Divider />
     </Container>
   );
 }

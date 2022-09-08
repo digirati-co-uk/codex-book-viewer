@@ -46,6 +46,7 @@ export const Zoom = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0.5em;
 
   @media screen and (max-width: 500px) {
     font-size: 1.5em;
