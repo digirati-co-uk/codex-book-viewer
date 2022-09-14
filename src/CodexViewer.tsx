@@ -1,18 +1,18 @@
 import { Grid } from './components/Grid/Grid';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { VaultProvider } from 'react-iiif-vault';
+import { useExternalManifest, VaultProvider } from "react-iiif-vault";
 import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPagedList';
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
 import { Actions } from "./components/Actions/Actions";
 import { useState } from "react";
 
-interface GettyViewerProps {
+export interface CodexViewerProps {
   manifest: string;
   initCanvas: number;
 }
 
-export function GettyViewer(props: GettyViewerProps) {
+export function CodexViewer(props: CodexViewerProps) {
   const [paging, setPaging] = useState(true);
 
   const handleLayout = (x: string) => {

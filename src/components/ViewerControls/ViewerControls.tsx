@@ -1,4 +1,4 @@
-import { useCanvas, useManifest, useSimpleViewer, useVisibleCanvases } from "react-iiif-vault";
+import { useCanvas, useManifest, useSimpleViewer, useVisibleCanvases } from 'react-iiif-vault';
 import {
   ButtonIcon,
   Button,
@@ -24,7 +24,9 @@ export function ViewerControls(props: ViewerControlsProps) {
   const [cachedFolio, setCachedFolio] = useState(null);
 
   useEffect(() => {
-    canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
+    if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {
+      setCachedFolio(canvas.metadata[2].value.en[0] as any);
+    }
   }, [canvas]);
 
   useEffect(() => {
