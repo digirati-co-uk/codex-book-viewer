@@ -1,7 +1,9 @@
 import { ImageWithOptionalService } from 'react-iiif-vault';
 import { ImageCandidate } from '@atlas-viewer/iiif-image-api';
 import { Fragment } from 'react';
-import { TileSet } from '@atlas-viewer/atlas';
+import { TileSet as _TileSet } from '@atlas-viewer/atlas';
+
+const TileSet: any = _TileSet;
 
 export function Image({
   id,

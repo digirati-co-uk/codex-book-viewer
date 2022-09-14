@@ -20,6 +20,10 @@ export function ThumbnailPagedList() {
     }
   }, [currentCanvasIndex]);
 
+  if (!manifest) {
+    return null;
+  }
+
   return (
     <ThumbnailViewer>
       {manifest.items.map((canvasRef, idx) => {

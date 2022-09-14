@@ -29,7 +29,9 @@ export function ViewerControls(props: ViewerControlsProps) {
   }, [props.initCanvas]);
 
   useEffect(() => {
-    canvas ? setCachedFolio(canvas.metadata[2].value.en[0]) : '';
+    if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {
+      setCachedFolio(canvas.metadata[2].value.en[0] as any);
+    }
   }, [canvas]);
 
   if (!manifest || !isLoaded) {
