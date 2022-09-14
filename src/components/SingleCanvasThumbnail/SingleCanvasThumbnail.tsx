@@ -9,7 +9,7 @@ export function SingleCanvasThumbnail({ size }: { size: number }) {
     height: size,
   });
   const canvas = useCanvas();
-  const title = canvas.summary ? getValue(canvas.summary) : getValue(canvas.label);
+  const title = canvas ? (canvas.summary ? getValue(canvas.summary) : getValue(canvas.label)) : '';
 
   if (!thumbnail) {
     return <ThumbnailPlaceholder />;

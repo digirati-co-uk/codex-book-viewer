@@ -1,10 +1,13 @@
-import { GettyViewer } from './GettyViewer';
+import { CodexViewer } from './CodexViewer';
 
 export function App() {
   // return (
-  //   <GettyViewer manifest="https://digirati-co-uk.github.io/wunder.json" />
+  //   <CodexViewer manifest="https://digirati-co-uk.github.io/wunder.json" />
   // );
   return (
-    <GettyViewer manifest="https://digirati-co-uk.github.io/florentine-data-exploration/iiif3/vol3.json" initCanvas={324} />
+    <CodexViewer
+      manifest="https://digirati-co-uk.github.io/florentine-data-exploration/iiif3/vol3.json"
+      initCanvas={324}
+    />
   );
 }

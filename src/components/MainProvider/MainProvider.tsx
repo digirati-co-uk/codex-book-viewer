@@ -6,7 +6,7 @@ interface MainProviderProps {
   children: ReactElement;
   paging: boolean;
 }
-export function MainProvider( props: MainProviderProps) {
+export function MainProvider(props: MainProviderProps) {
   // Fixes bug with react-iiif-vault where it shows a "something went wrong error".
   const resp = useExternalManifest(props.manifest);
 

@@ -38,7 +38,7 @@ export function Actions(props: ActionsProps) {
       <Divider />
 
       <Zoom>
-        +<Slider type="range" min={1} max={100} value={zoom} onChange={(e) => setZoom(e.target.value)}></Slider>-
+        +<Slider type="range" min={1} max={100} value={zoom} onChange={(e) => setZoom(e.target.valueAsNumber)}></Slider>-
       </Zoom>
       <Divider />
       <IconButton>

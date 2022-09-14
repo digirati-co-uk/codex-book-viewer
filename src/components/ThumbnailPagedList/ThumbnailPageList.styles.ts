@@ -34,7 +34,7 @@ export const ThumbnailPlaceholder = styled.div`
   background: ${greyBg};
 `;
 
-export const ThumbnailImage = styled(LazyLoadImage)`
+export const ThumbnailImage = styled(LazyLoadImage as any)`
   display: block;
   max-width: 100%;
   object-fit: contain;
