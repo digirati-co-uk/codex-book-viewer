@@ -48,6 +48,16 @@ import chalk from 'chalk';
       react18: true,
     })
   );
+  await build(
+    defineConfig({
+      entry: `src/npm.ts`,
+      name: 'index',
+      outDir: 'dist/react17',
+      external: [...defaultExternal],
+      react: true,
+      react18: false,
+    })
+  );
 
   function buildMsg(name) {
     console.log(chalk.grey(`\n\nBuilding ${chalk.blue(name)}\n`));
