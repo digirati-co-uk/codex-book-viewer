@@ -12,7 +12,7 @@ export const Container = styled.div`
     width: 50px;
   }
 `;
-export const LayoutBtn = styled.button<{ selected: string; id: string }>`
+export const LayoutBtn = styled.button<{ $selected: string; $id: string }>`
   background-color: transparent;
   border: none;
   width: 30px;
@@ -28,8 +28,8 @@ export const LayoutBtn = styled.button<{ selected: string; id: string }>`
   }
 
   ${(props) =>
-    props.selected &&
-    props.selected === props.id &&
+    props.$selected &&
+    props.$selected === props.$id &&
     css` & div {
             background-color: ${highlight};
           `}
