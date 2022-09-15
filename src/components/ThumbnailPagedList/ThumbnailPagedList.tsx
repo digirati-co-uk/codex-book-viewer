@@ -3,11 +3,13 @@ import { SingleCanvasThumbnail } from '../SingleCanvasThumbnail/SingleCanvasThum
 import { ThumbnailRow, Thumbnail, ThumbnailCover, ThumbnailColumn } from './ThumbnailPageList.styles';
 import { useLayoutEffect } from 'react';
 import { CanvasNormalized } from '@iiif/presentation-3';
+import { useGridState } from '../Grid/Grid.context';
 
 export function ThumbnailPagedList() {
   const manifest = useManifest();
   const { currentSequenceIndex, sequence, items, setCurrentCanvasId } = useSimpleViewer();
   const vault = useVault();
+  const gridState = useGridState();
 
   useLayoutEffect(() => {
     const found = document.querySelector(`[data-canvas-sequence-index="${currentSequenceIndex}"]`);
@@ -24,14 +26,9 @@ export function ThumbnailPagedList() {
   }
 
   return (
-    <ThumbnailColumn>
+    <ThumbnailColumn $expanded={gridState.expanded}>
       {sequence.map((sideBySide, idx) => {
-        // @todo this is a row - so it may need style when in the expanded view.
-        //     The sequence is: [ [0], [1, 2], [3, 4] ...]
-        //     Indicating what the order should be. The full canvas can be retrieved using:
-        //        items[index];
-        //     This Allows rows / columns to be built. However when in expanded view it needs a
-        //     different style to fit into model free-flowing grid.
+
         return (
           <ThumbnailRow data-canvas-sequence-index={idx} key={idx} $active={idx === currentSequenceIndex}>
             {sideBySide.map((index) => {
@@ -42,7 +39,6 @@ export function ThumbnailPagedList() {
               return (
                 <CanvasContext key={canvas.id} canvas={canvas.id}>
                   <T
-                    // $active={ids.indexOf(canvas.id) !== -1}
                     onClick={() => setCurrentCanvasId(canvas.id)}
                     data-canvas-thumbnail-index={idx}
                   >

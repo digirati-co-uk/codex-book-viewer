@@ -54,9 +54,10 @@ export const ThumbnailViewer = styled.div`
   justify-items: center;
 `;
 
-export const ThumbnailColumn = styled.div`
+export const ThumbnailColumn = styled.div<{ $expanded?: boolean }>`
   display: flex;
-  flex-direction: column;
+  flex-wrap: ${(props) => props.$expanded ? 'wrap' : ''};
+  flex-direction: ${(props) => props.$expanded ? 'row' : 'column'};
 `;
 export const ThumbnailRow = styled.div<{ $active?: boolean }>`
   display: flex;
