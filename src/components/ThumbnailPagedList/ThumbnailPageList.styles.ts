@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { greyBg, highlight, serif, whiteText } from "../../tokens";
+import { greyBg, highlight, serif, whiteText } from '../../tokens';
 
 export const Thumbnail = styled.div<{ $active?: boolean }>`
   background: ${greyBg};
@@ -53,6 +53,22 @@ export const ThumbnailViewer = styled.div`
   grid-auto-rows: min-content;
   justify-items: center;
 `;
+
+export const ThumbnailColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const ThumbnailRow = styled.div<{ $active?: boolean }>`
+  display: flex;
+  margin: 0.5em;
+  justify-content: center;
+  ${(props) =>
+    props.$active &&
+    css`
+      outline: 2px solid ${highlight};
+    `}
+`;
+
 export const ThumbnailTitle = styled.h2`
   font-size: 0.75em;
   font-weight: 400;
