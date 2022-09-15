@@ -31,6 +31,7 @@ export function CodexViewer(props: CodexViewerProps) {
           }
           actions={
             <Actions
+              paging={paging}
               onLayout={(x) => {
                 handleLayout(x);
               }}
