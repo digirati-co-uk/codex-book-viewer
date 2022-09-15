@@ -2,7 +2,10 @@ import { Container, Heading, Content, Buttons, Button } from './Sidebar.styles';
 import { useTranslation } from 'react-i18next';
 import { ReactElement } from 'react';
 import { useGridContext, useGridState } from '../Grid/Grid.context';
-import { ChevronLeft, ChevronDoubleLeft, ChevronRight, ChevronDoubleRight } from '@styled-icons/heroicons-solid';
+import { ChevronLeft } from '@styled-icons/heroicons-solid/ChevronLeft';
+import { ChevronDoubleLeft } from '@styled-icons/heroicons-solid/ChevronDoubleLeft';
+import { ChevronRight } from '@styled-icons/heroicons-solid/ChevronRight';
+import { ChevronDoubleRight } from '@styled-icons/heroicons-solid/ChevronDoubleRight';
 import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface SidebarProps {

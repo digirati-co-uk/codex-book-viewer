@@ -1,6 +1,5 @@
 import { greyBg, greyBg2, highlight, serif, whiteText } from '../../tokens';
 import styled from 'styled-components';
-import { ChevronBarRight, ChevronRight } from '@styled-icons/bootstrap';
 
 export const Container = styled.div`
   background: ${greyBg};
