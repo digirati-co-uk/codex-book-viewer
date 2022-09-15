@@ -1,14 +1,18 @@
-import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, Slider } from './Actions.styles';
+import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, ZoomBtn } from "./Actions.styles";
 import { useState } from 'react';
 import { Printer } from '@styled-icons/feather/Printer';
 import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
+import { ZoomIn, ZoomOut } from '@styled-icons/bootstrap';
+import { ZoomOutMap } from '@styled-icons/material-sharp/ZoomOutMap';
 
 interface ActionsProps {
   onLayout(s: string): void;
+  onZoomIn(): void;
+  onZoomOut(): void;
+  onReset(): void;
 }
 export function Actions(props: ActionsProps) {
   const [selected, setSelected] = useState('2');
-  const [zoom, setZoom] = useState(1);
 
   return (
     <Container>
@@ -38,16 +42,30 @@ export function Actions(props: ActionsProps) {
       <Divider />
 
       <Zoom>
-        +<Slider type="range" min={1} max={100} value={zoom} onChange={(e) => setZoom(e.target.valueAsNumber)}></Slider>-
+        <ZoomBtn
+          onClick={() => {
+            props.onZoomIn();
+          }}
+        >
+          <ZoomIn />
+        </ZoomBtn>
+
+        <ZoomBtn
+          onClick={() => {
+            props.onReset();
+          }}
+        >
+          <ZoomOutMap />
+        </ZoomBtn>
+
+        <ZoomBtn
+          onClick={() => {
+            props.onZoomOut();
+          }}
+        >
+          <ZoomOut />
+        </ZoomBtn>
       </Zoom>
-      <Divider />
-      <IconButton>
-        <Printer />
-      </IconButton>
-      <Divider />
-      <IconButton>
-        <QuoteAltLeft />
-      </IconButton>
     </Container>
   );
 }
