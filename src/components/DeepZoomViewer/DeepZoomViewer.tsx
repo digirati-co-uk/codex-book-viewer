@@ -7,19 +7,23 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
-import { getValue } from "@iiif/vault-helpers";
 
 interface DeepZoomViewerProps {
   initCanvas: number;
 }
-export const DeepZoomViewer = forwardRef((props: DeepZoomViewerProps, ref) => {
+
+export interface DeepZoomViewerRef {
+  startZoom(v: number): void;
+  resetZoom(): void;
+}
+
+export const DeepZoomViewer = forwardRef<DeepZoomViewerRef, DeepZoomViewerProps>((props: DeepZoomViewerProps, ref) => {
   const bridge = useContextBridge();
   const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();
-  const manifest = useManifest();
 
   useImperativeHandle(ref, () => ({
-    startZoom(v) {
+    startZoom(v: number) {
       v && runtime.current?.world.zoomTo(v);
     },
     resetZoom() {
@@ -41,9 +45,13 @@ export const DeepZoomViewer = forwardRef((props: DeepZoomViewerProps, ref) => {
 
   return (
     <Container>
-      <LocaleString as={Heading}>
-        {canvases[0].metadata[1].label.en + ' ' + canvases[0].metadata[1].value.en + ', ' + canvases[0].label.en}{' '}
-      </LocaleString>
+      <Heading>
+        <LocaleString>{canvases[0].metadata[1].label}</LocaleString>
+        {' '}
+        <LocaleString>{canvases[0].metadata[1].value}</LocaleString>
+        {' '}
+        <LocaleString>{canvases[0].label}</LocaleString>
+      </Heading>
       <ViewerControls initCanvas={props.initCanvas} />
       <style>{`
         .atlas-container {
