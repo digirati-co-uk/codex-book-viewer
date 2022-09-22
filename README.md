@@ -11,5 +11,6 @@ Usage:
 import { CodexViewer } from 'codex-book-viewer';
 
 
-<CodexViewer manifest="..." />
+<CodexViewer manifest="MANIFEST_ID" canvasId="CURRENT_CANVAS_ID" book="CURRENT_BOOK_NUMBER"  />
+
 ```

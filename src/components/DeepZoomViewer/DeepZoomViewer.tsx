@@ -1,5 +1,5 @@
 import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
-import { CanvasContext, ContextBridge, useContextBridge, useManifest, useVisibleCanvases } from 'react-iiif-vault';
+import { CanvasContext, ContextBridge, useContextBridge, useExternalResource, useVisibleCanvases } from 'react-iiif-vault';
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
 import { blackBg2 } from '../../tokens';
@@ -7,9 +7,10 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
+import { getValue } from '@iiif/vault-helpers/i18n';
 
 interface DeepZoomViewerProps {
-  initCanvas: number;
+  initCanvas: string;
 }
 
 export interface DeepZoomViewerRef {
@@ -21,6 +22,10 @@ export const DeepZoomViewer = forwardRef<DeepZoomViewerRef, DeepZoomViewerProps>
   const bridge = useContextBridge();
   const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();
+  const {resource, isLoaded } = useExternalResource(props.initCanvas);
+  // @ts-ignore
+  const canvasInfo = isLoaded && resource ? resource.metadata : {};
+  const volumeKey = canvasInfo.find((x: { label: { en: string | string[]; }; }) => x.label.en.includes('Volume Key'));
 
   useImperativeHandle(ref, () => ({
     startZoom(v: number) {
@@ -52,7 +57,7 @@ export const DeepZoomViewer = forwardRef<DeepZoomViewerRef, DeepZoomViewerProps>
         {' '}
         <LocaleString>{canvases[0].label}</LocaleString>
       </Heading>
-      <ViewerControls initCanvas={props.initCanvas} />
+      <ViewerControls initCanvas={Number(getValue(volumeKey.value))} />
       <style>{`
         .atlas-container {
           min-width: 0; 

@@ -37,7 +37,7 @@ export function ViewerControls(props: ViewerControlsProps) {
   if (!manifest) {
     return <div>Loading...</div>;
   }
-
+  
   return (
     <FloatingContainerOuter>
       <FloatingContainer>

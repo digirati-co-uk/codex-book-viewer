@@ -1,16 +1,17 @@
 import { Grid } from './components/Grid/Grid';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { useExternalManifest, VaultProvider } from "react-iiif-vault";
+import { CanvasContext, useCanvas, useExternalManifest, useExternalResource, VaultProvider } from "react-iiif-vault";
 import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPagedList';
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer, DeepZoomViewerRef } from "./components/DeepZoomViewer/DeepZoomViewer";
 import { Actions } from './components/Actions/Actions';
 import { useState, useRef } from 'react';
+import { getValue } from '@iiif/vault-helpers/i18n';
 
 export interface CodexViewerProps {
   manifest: string;
-  initCanvas: number;
-  range: string;
+  canvasId: string;
+  book: string;
 }
 
 export function CodexViewer(props: CodexViewerProps) {
@@ -22,7 +23,7 @@ export function CodexViewer(props: CodexViewerProps) {
   };
   return (
     <VaultProvider>
-      <MainProvider manifest={props.manifest} paging={paging} range={props.range}>
+      <MainProvider manifest={props.manifest} paging={paging} book={props.book}>
         <Grid
           sidebar={
             <Sidebar>
@@ -47,7 +48,7 @@ export function CodexViewer(props: CodexViewerProps) {
             />
           }
         >
-          <DeepZoomViewer ref={zoom_ref} initCanvas={props.initCanvas} />
+          <DeepZoomViewer ref={zoom_ref} initCanvas={props.canvasId} />
         </Grid>
       </MainProvider>
     </VaultProvider>

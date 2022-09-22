@@ -3,9 +3,9 @@ import { SimpleViewerProvider, useExternalManifest } from 'react-iiif-vault';
 
 interface MainProviderProps {
   manifest: string;
+  book: string;
   children: ReactElement;
   paging: boolean;
-  range: string;
 }
 export function MainProvider(props: MainProviderProps) {
   const { manifest, isLoaded } = useExternalManifest(props.manifest);
@@ -21,12 +21,14 @@ export function MainProvider(props: MainProviderProps) {
   }
   resp.manifest.behavior = ['paged'];
 
+  const range = manifest.structures.find(x => x.id.includes('book' + props.book));
+
   return (
     <SimpleViewerProvider
       key={props.paging ? 'paging' : 'non-paging'}
       pagingEnabled={props.paging}
       manifest={props.manifest}
-      rangeId={props.range}
+      rangeId={ range ? range.id : ''}
     >
       {props.children}
     </SimpleViewerProvider>
