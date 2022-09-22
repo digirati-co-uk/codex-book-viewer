@@ -1,12 +1,11 @@
 import { Grid } from './components/Grid/Grid';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { CanvasContext, useCanvas, useExternalManifest, useExternalResource, VaultProvider } from "react-iiif-vault";
+import { VaultProvider } from "react-iiif-vault";
 import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPagedList';
 import { MainProvider } from './components/MainProvider/MainProvider';
 import { DeepZoomViewer, DeepZoomViewerRef } from "./components/DeepZoomViewer/DeepZoomViewer";
 import { Actions } from './components/Actions/Actions';
 import { useState, useRef } from 'react';
-import { getValue } from '@iiif/vault-helpers/i18n';
 
 export interface CodexViewerProps {
   manifest: string;

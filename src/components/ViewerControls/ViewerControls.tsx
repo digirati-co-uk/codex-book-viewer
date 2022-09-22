@@ -1,4 +1,4 @@
-import { useCanvas, useExternalManifest, useManifest, useSimpleViewer } from 'react-iiif-vault';
+import { useCanvas, useManifest, useSimpleViewer } from 'react-iiif-vault';
 import {
   ButtonIcon,
   Button,
@@ -37,7 +37,7 @@ export function ViewerControls(props: ViewerControlsProps) {
   if (!manifest) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <FloatingContainerOuter>
       <FloatingContainer>
