@@ -13,20 +13,13 @@ import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
-interface ViewerControlsProps {
-  initCanvas: number;
-}
-
-export function ViewerControls(props: ViewerControlsProps) {
+export function ViewerControls() {
   const canvas = useCanvas();
+
   const manifest = useManifest();
-  const { items, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
+  const { items, nextCanvas, previousCanvas } = useSimpleViewer();
   const totalCanvases = items.length;
   const [cachedFolio, setCachedFolio] = useState(null);
-
-  useLayoutEffect(() => {
-    setCurrentCanvasIndex(props.initCanvas);
-  }, [props.initCanvas]);
 
   useEffect(() => {
     if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {

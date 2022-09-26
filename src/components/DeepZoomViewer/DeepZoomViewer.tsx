@@ -1,5 +1,5 @@
 import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
-import { CanvasContext, ContextBridge, useContextBridge, useManifest, useVisibleCanvases } from 'react-iiif-vault';
+import { CanvasContext, ContextBridge, useContextBridge, useVisibleCanvases } from 'react-iiif-vault';
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
 import { blackBg2 } from '../../tokens';
@@ -8,16 +8,11 @@ import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
 
-interface DeepZoomViewerProps {
-  initCanvas: number;
-}
-
 export interface DeepZoomViewerRef {
   startZoom(v: number): void;
   resetZoom(): void;
 }
-
-export const DeepZoomViewer = forwardRef<DeepZoomViewerRef, DeepZoomViewerProps>((props: DeepZoomViewerProps, ref) => {
+export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
   const bridge = useContextBridge();
   const runtime = useRef<Runtime>();
   const canvases = useVisibleCanvases();
@@ -52,7 +47,7 @@ export const DeepZoomViewer = forwardRef<DeepZoomViewerRef, DeepZoomViewerProps>
         {' '}
         <LocaleString>{canvases[0].label}</LocaleString>
       </Heading>
-      <ViewerControls initCanvas={props.initCanvas} />
+      <ViewerControls />
       <style>{`
         .atlas-container {
           min-width: 0; 

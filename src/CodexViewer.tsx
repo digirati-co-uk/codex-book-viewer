@@ -9,7 +9,7 @@ import { useState, useRef } from 'react';
 
 export interface CodexViewerProps {
   manifest: string;
-  initCanvas: number;
+  initCanvas: string;
   range: string;
 }
 
@@ -22,7 +22,7 @@ export function CodexViewer(props: CodexViewerProps) {
   };
   return (
     <VaultProvider>
-      <MainProvider manifest={props.manifest} paging={paging} range={props.range}>
+      <MainProvider manifest={props.manifest} paging={paging} range={props.range} initCanvas={props.initCanvas}>
         <Grid
           sidebar={
             <Sidebar>
@@ -47,7 +47,7 @@ export function CodexViewer(props: CodexViewerProps) {
             />
           }
         >
-          <DeepZoomViewer ref={zoom_ref} initCanvas={props.initCanvas} />
+          <DeepZoomViewer ref={zoom_ref}/>
         </Grid>
       </MainProvider>
     </VaultProvider>
