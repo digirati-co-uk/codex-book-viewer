@@ -10,29 +10,27 @@ interface ActionsProps {
   onZoomIn(): void;
   onZoomOut(): void;
   onReset(): void;
+  paging: boolean;
 }
 export function Actions(props: ActionsProps) {
-  const [selected, setSelected] = useState('2');
 
   return (
     <Container>
       <Layout>
         <LayoutBtn
-          selected={selected}
-          id={'1'}
+          $selected={props.paging ? '2' : '1'}
+          $id={'1'}
           onClick={() => {
             props.onLayout('1');
-            setSelected('1');
           }}
         >
           <Icon />
         </LayoutBtn>
         <LayoutBtn
-          selected={selected}
-          id={'2'}
+          $selected={props.paging ? '2' : '1'}
+          $id={'2'}
           onClick={() => {
             props.onLayout('2');
-            setSelected('2');
           }}
         >
           <Icon /> <Icon />

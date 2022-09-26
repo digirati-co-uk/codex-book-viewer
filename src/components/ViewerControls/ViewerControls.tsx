@@ -19,9 +19,10 @@ interface ViewerControlsProps {
 
 export function ViewerControls(props: ViewerControlsProps) {
   const canvas = useCanvas();
-  const currentManifest = useManifest();
-  const { manifest, isLoaded } = useExternalManifest(currentManifest.id);
-  const { totalCanvases, setCurrentCanvasId, nextCanvas, previousCanvas } = useSimpleViewer();
+
+  const manifest = useManifest();
+  const { items, setCurrentCanvasId, nextCanvas, previousCanvas } = useSimpleViewer();
+  const totalCanvases = items.length;
   const [cachedFolio, setCachedFolio] = useState(null);
 
   // useLayoutEffect(() => {
@@ -34,7 +35,7 @@ export function ViewerControls(props: ViewerControlsProps) {
     }
   }, [canvas]);
 
-  if (!manifest || !isLoaded) {
+  if (!manifest) {
     return <div>Loading...</div>;
   }
 
