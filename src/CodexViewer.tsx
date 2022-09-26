@@ -9,7 +9,7 @@ import { useState, useRef } from 'react';
 
 export interface CodexViewerProps {
   manifest: string;
-  initCanvas: number;
+  initCanvas: string;
   range: string;
 }
 

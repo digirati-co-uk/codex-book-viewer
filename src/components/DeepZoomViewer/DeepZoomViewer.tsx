@@ -10,7 +10,7 @@ import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-pa
 import { getValue } from "@iiif/vault-helpers";
 
 interface DeepZoomViewerProps {
-  initCanvas: number;
+  initCanvas: string;
 }
 export const DeepZoomViewer = forwardRef((props: DeepZoomViewerProps, ref) => {
   const bridge = useContextBridge();

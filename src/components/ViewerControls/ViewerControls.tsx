@@ -14,18 +14,18 @@ import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
 interface ViewerControlsProps {
-  initCanvas: number;
+  initCanvas: string;
 }
 
 export function ViewerControls(props: ViewerControlsProps) {
   const canvas = useCanvas();
   const currentManifest = useManifest();
   const { manifest, isLoaded } = useExternalManifest(currentManifest.id);
-  const { totalCanvases, setCurrentCanvasIndex, nextCanvas, previousCanvas } = useSimpleViewer();
+  const { totalCanvases, setCurrentCanvasId, nextCanvas, previousCanvas } = useSimpleViewer();
   const [cachedFolio, setCachedFolio] = useState(null);
 
   useLayoutEffect(() => {
-    setCurrentCanvasIndex(props.initCanvas);
+    setCurrentCanvasId(props.initCanvas)
   }, [props.initCanvas]);
 
   useEffect(() => {
