@@ -3,7 +3,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { useExternalManifest, VaultProvider } from "react-iiif-vault";
 import { ThumbnailPagedList } from './components/ThumbnailPagedList/ThumbnailPagedList';
 import { MainProvider } from './components/MainProvider/MainProvider';
-import { DeepZoomViewer } from './components/DeepZoomViewer/DeepZoomViewer';
+import { DeepZoomViewer, DeepZoomViewerRef } from "./components/DeepZoomViewer/DeepZoomViewer";
 import { Actions } from './components/Actions/Actions';
 import { useState, useRef } from 'react';
 
@@ -14,7 +14,7 @@ export interface CodexViewerProps {
 }
 
 export function CodexViewer(props: CodexViewerProps) {
-  const zoom_ref = useRef(null);
+  const zoom_ref = useRef<DeepZoomViewerRef>(null);
   const [paging, setPaging] = useState(true);
 
   const handleLayout = (x: string) => {
@@ -31,17 +31,18 @@ export function CodexViewer(props: CodexViewerProps) {
           }
           actions={
             <Actions
+              paging={paging}
               onLayout={(x) => {
                 handleLayout(x);
               }}
               onZoomIn={() => {
-                zoom_ref.current.startZoom(0.75);
+                zoom_ref.current?.startZoom(0.75);
               }}
               onZoomOut={() => {
-                zoom_ref.current.startZoom(1 / 0.75);
+                zoom_ref.current?.startZoom(1 / 0.75);
               }}
               onReset={() => {
-                zoom_ref.current.resetZoom();
+                zoom_ref.current?.resetZoom();
               }}
             />
           }
