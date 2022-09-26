@@ -47,7 +47,7 @@ export function CodexViewer(props: CodexViewerProps) {
             />
           }
         >
-          <DeepZoomViewer ref={zoom_ref} initCanvas={props.initCanvas} />
+          <DeepZoomViewer ref={zoom_ref}/>
         </Grid>
       </MainProvider>
     </VaultProvider>
