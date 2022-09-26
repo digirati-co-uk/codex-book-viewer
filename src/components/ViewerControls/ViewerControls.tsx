@@ -24,9 +24,9 @@ export function ViewerControls(props: ViewerControlsProps) {
   const { totalCanvases, setCurrentCanvasId, nextCanvas, previousCanvas } = useSimpleViewer();
   const [cachedFolio, setCachedFolio] = useState(null);
 
-  useLayoutEffect(() => {
-    setCurrentCanvasId(props.initCanvas)
-  }, [props.initCanvas]);
+  // useLayoutEffect(() => {
+  //   setCurrentCanvasId(props.initCanvas)
+  // }, [props.initCanvas]);
 
   useEffect(() => {
     if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {

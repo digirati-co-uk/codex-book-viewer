@@ -22,7 +22,7 @@ export function CodexViewer(props: CodexViewerProps) {
   };
   return (
     <VaultProvider>
-      <MainProvider manifest={props.manifest} paging={paging} range={props.range}>
+      <MainProvider manifest={props.manifest} paging={paging} range={props.range} initCanvas={props.initCanvas}>
         <Grid
           sidebar={
             <Sidebar>
