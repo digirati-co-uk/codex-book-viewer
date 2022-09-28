@@ -6,6 +6,7 @@ interface MainProviderProps {
   children: ReactElement;
   paging: boolean;
   range: string;
+  initCanvas: string;
 }
 export function MainProvider(props: MainProviderProps) {
   const { manifest, isLoaded } = useExternalManifest(props.manifest);
@@ -27,6 +28,7 @@ export function MainProvider(props: MainProviderProps) {
       pagingEnabled={props.paging}
       manifest={props.manifest}
       rangeId={props.range}
+      startCanvas={props.initCanvas}
     >
       {props.children}
     </SimpleViewerProvider>

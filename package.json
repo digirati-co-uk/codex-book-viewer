@@ -1,6 +1,6 @@
 {
   "name": "codex-book-viewer",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "dist/index.umd.js",
   "module": "dist/bundle/esm/index.mjs",
   "types": ".build/types/npm.d.ts",
@@ -13,6 +13,10 @@
       "require": "./dist/bundle/cjs/index.js",
       "import": "./dist/bundle/esm/index.mjs",
       "default": "./dist/index.umd.js"
+    },
+    "./react17": {
+      "require": "./dist/react17/cjs/index.js",
+      "import": "./dist/react17/esm/index.mjs"
     }
   },
   "typesVersions": {
@@ -26,7 +30,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "prepublishOnly": "tsc -p . --declaration --emitDeclarationOnly && node ./scripts/build.mjs"
+    "prepublishOnly": "tsc -p . --declaration --emitDeclarationOnly && node ./scripts/build.mjs && node ./scripts/validate.mjs"
   },
   "resolutions": {
     "@atlas-viewer/iiif-image-api": "^2.0.3"

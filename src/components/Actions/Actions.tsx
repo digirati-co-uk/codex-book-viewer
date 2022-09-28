@@ -1,8 +1,6 @@
-import { Container, Layout, Zoom, LayoutBtn, Icon, IconButton, Divider, ZoomBtn } from "./Actions.styles";
-import { useState } from 'react';
-import { Printer } from '@styled-icons/feather/Printer';
-import { QuoteAltLeft } from '@styled-icons/boxicons-solid/QuoteAltLeft';
-import { ZoomIn, ZoomOut } from '@styled-icons/bootstrap';
+import { Container, Layout, Zoom, LayoutBtn, Icon, Divider, ZoomBtn } from './Actions.styles';
+import { ZoomIn } from '@styled-icons/bootstrap/ZoomIn';
+import { ZoomOut } from '@styled-icons/bootstrap/ZoomOut';
 import { ZoomOutMap } from '@styled-icons/material-sharp/ZoomOutMap';
 
 interface ActionsProps {
@@ -13,7 +11,6 @@ interface ActionsProps {
   paging: boolean;
 }
 export function Actions(props: ActionsProps) {
-
   return (
     <Container>
       <Layout>
