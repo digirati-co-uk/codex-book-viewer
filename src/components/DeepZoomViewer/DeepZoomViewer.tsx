@@ -38,14 +38,23 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
     );
   });
 
+  const metadata = canvases[0].metadata;
+
+  // @ts-ignore
+  const book = metadata ? metadata.findIndex((x) => x.label.en == "Book") : '';
+  // @ts-ignore
+  const bookTitle = metadata ? metadata.find((x) => x.label.en == "Title").value : '';
+  
+
   return (
     <Container>
       <Heading>
-        <LocaleString>{canvases[0].metadata[1].label}</LocaleString>
+        <LocaleString>{metadata[book].label}</LocaleString>
         {' '}
-        <LocaleString>{canvases[0].metadata[1].value}</LocaleString>
-        {' '}
-        <LocaleString>{canvases[0].label}</LocaleString>
+        <LocaleString>{metadata[book].value}</LocaleString>
+        {' - '}
+        <LocaleString>{bookTitle}</LocaleString>
+
       </Heading>
       <ViewerControls />
       <style>{`
