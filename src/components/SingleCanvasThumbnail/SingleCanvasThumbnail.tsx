@@ -10,17 +10,16 @@ export function SingleCanvasThumbnail({ size }: { size: number }) {
     height: size,
   });
   const canvas = useCanvas();
-  const metadata = canvas ? canvas.metadata: null;
+  const metadata = canvas ? canvas.metadata : '';
 
-  // @ts-ignore
-  const book = metadata ? metadata.findIndex((x) => x.label.en == "Book") : '';
-  // @ts-ignore
-  const folio = metadata ? metadata.find((x) => x.label.en == "Book Foliation").value : '';
+  const book = metadata ? metadata.findIndex((x) => x.label.en?.includes("Book")) : '';
+  const folio = metadata ? metadata.findIndex((x) => x.label.en?.includes("Book Foliation")) : '';
 
 
   if (!thumbnail) {
     return <ThumbnailPlaceholder />;
   }
+
   return (
     <LazyLoadComponent threshold={800} style={{ height: size, width: size }}>
       <Inner size={size} />
@@ -34,7 +33,7 @@ export function SingleCanvasThumbnail({ size }: { size: number }) {
         </LocaleString>
         {', '}
         <LocaleString>
-          {folio}
+          {metadata[folio].value}
         </LocaleString>
       </ThumbnailTitle>
     </LazyLoadComponent>

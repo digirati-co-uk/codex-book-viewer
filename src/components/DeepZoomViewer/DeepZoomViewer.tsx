@@ -40,10 +40,8 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
 
   const metadata = canvases[0].metadata;
 
-  // @ts-ignore
-  const book = metadata ? metadata.findIndex((x) => x.label.en == "Book") : '';
-  // @ts-ignore
-  const bookTitle = metadata ? metadata.find((x) => x.label.en == "Title").value : '';
+  const book = metadata ? metadata.findIndex((x) => x.label.en?.includes("Book")) : '';
+  const bookTitle = metadata ? metadata.findIndex((x) => x.label.en?.includes("Title")) : '';
   
 
   return (
@@ -53,7 +51,7 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
         {' '}
         <LocaleString>{metadata[book].value}</LocaleString>
         {' - '}
-        <LocaleString>{bookTitle}</LocaleString>
+        <LocaleString>{metadata[bookTitle].value}</LocaleString>
 
       </Heading>
       <ViewerControls />
