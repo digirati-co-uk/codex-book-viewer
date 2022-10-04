@@ -4,7 +4,9 @@ import { blackBg, greyBg, greyBg2, whiteText } from '../../tokens';
 export const FloatingContainerOuter = styled.div`
   position: relative;
   width: 100%;
-
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 25px;
 `;
 
 export const FloatingContainer = styled.div`
@@ -73,7 +75,6 @@ export const CentralContainer = styled.div`
 
 export const InputLabel = styled.label`
   color: ${whiteText};
-  display: flex;
   margin-right: 1em;
 `;
 export const Input = styled.input`
@@ -87,12 +88,9 @@ export const Input = styled.input`
 export const TextContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 1em;
+  margin-right: 1em;
   color: ${whiteText};
-
-  & ~ & {
-    margin-left: 0.4em;
-  }
+  
 `;
 export const ButtonIcon = styled.span`
   margin: 0 0.5em;

@@ -1,7 +1,6 @@
 import { useCanvas, useThumbnail } from 'react-iiif-vault';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { ThumbnailImage, ThumbnailPlaceholder, ThumbnailTitle } from '../ThumbnailPagedList/ThumbnailPageList.styles';
-import { getValue } from '@iiif/vault-helpers';
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 
 export function SingleCanvasThumbnail({ size }: { size: number }) {
@@ -31,7 +30,7 @@ export function SingleCanvasThumbnail({ size }: { size: number }) {
         <LocaleString>
           {metadata[book].value}
         </LocaleString>
-        {', '}
+        {', Folio '}
         <LocaleString>
           {metadata[folio].value}
         </LocaleString>

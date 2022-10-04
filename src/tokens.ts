@@ -5,3 +5,4 @@ export const blackBg2 = '#151515';
 export const whiteText = '#fff';
 export const highlight = '#31738E';
 export const serif = "'Lora', serif";
+export const sans = ' Open Sans, sans-serif';
