@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { greyBg, highlight, serif, whiteText } from '../../tokens';
+import { greyBg, highlight, sans, whiteText } from '../../tokens';
 
 export const Thumbnail = styled.div<{ $active?: boolean }>`
   background: ${greyBg};
@@ -73,7 +73,7 @@ export const ThumbnailRow = styled.div<{ $active?: boolean }>`
 export const ThumbnailTitle = styled.h2`
   font-size: 0.75em;
   font-weight: 400;
-  font-family: ${serif};
+  font-family: ${sans};
   text-rendering: geometricPrecision;
   color: ${whiteText};
 `;

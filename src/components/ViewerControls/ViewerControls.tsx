@@ -12,6 +12,7 @@ import {
 import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useLayoutEffect, useState } from 'react';
+import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 
 export function ViewerControls() {
   const canvas = useCanvas();
@@ -20,6 +21,10 @@ export function ViewerControls() {
   const { items, nextCanvas, previousCanvas } = useSimpleViewer();
   const totalCanvases = items.length;
   const [cachedFolio, setCachedFolio] = useState(null);
+
+  const prev_lang = {en: ['Previous'], es: ['Anterior']};
+  const next_lang = {en: ['Next'], es: ['Siguiente']};
+  const of_lang = {en: ['of'], es: ['de']};
 
   useEffect(() => {
     if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {
@@ -39,18 +44,20 @@ export function ViewerControls() {
             <ButtonIcon>
               <PrevIcon />
             </ButtonIcon>
-            Previous
+            <LocaleString>{prev_lang}</LocaleString>
           </Button>
           <CentralContainer>
             <InputLabel>Folio </InputLabel>
             <InputLabel>{cachedFolio}</InputLabel>
-            <TextContainer>of</TextContainer>
+            <TextContainer>
+              <LocaleString>{of_lang}</LocaleString>
+            </TextContainer>
             <TextContainer>
               <strong>{totalCanvases}</strong>
             </TextContainer>
           </CentralContainer>
           <Button $pos="right" onClick={nextCanvas}>
-            Next
+            <LocaleString>{next_lang}</LocaleString>
             <ButtonIcon>
               <NextIcon />
             </ButtonIcon>
