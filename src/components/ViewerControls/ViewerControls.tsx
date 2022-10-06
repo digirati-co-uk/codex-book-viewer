@@ -1,4 +1,4 @@
-import { useCanvas, useExternalManifest, useManifest, useSimpleViewer } from 'react-iiif-vault';
+import { useCanvas, useManifest, useSimpleViewer } from 'react-iiif-vault';
 import {
   ButtonIcon,
   Button,
