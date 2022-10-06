@@ -40,13 +40,12 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
 
   return (
     <Container>
-      <Heading>
-        <LocaleString>{canvases[0].metadata[1].label}</LocaleString>
-        {' '}
-        <LocaleString>{canvases[0].metadata[1].value}</LocaleString>
-        {' '}
-        <LocaleString>{canvases[0].label}</LocaleString>
-      </Heading>
+      {canvases[0] && canvases[0].metadata[1] && canvases[1].label ? (
+        <Heading>
+          <LocaleString>{canvases[0].metadata[1].label}</LocaleString>{' '}
+          <LocaleString>{canvases[0].metadata[1].value}</LocaleString> <LocaleString>{canvases[0].label}</LocaleString>
+        </Heading>
+      ) : null}
       <ViewerControls />
       <style>{`
         .atlas-container {

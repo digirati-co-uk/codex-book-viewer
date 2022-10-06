@@ -11,7 +11,7 @@ import {
 } from './ViewerControls.styles';
 import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function ViewerControls() {
   const canvas = useCanvas();
@@ -22,8 +22,12 @@ export function ViewerControls() {
   const [cachedFolio, setCachedFolio] = useState(null);
 
   useEffect(() => {
-    if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {
-      setCachedFolio(canvas.metadata[2].value.en[0] as any);
+    try {
+      if (canvas && canvas.metadata[2] && canvas.metadata[2].value && canvas.metadata[2].value.en) {
+        setCachedFolio(canvas.metadata[2].value.en[0] as any);
+      }
+    } catch (e) {
+      // nothing.
     }
   }, [canvas]);
 
