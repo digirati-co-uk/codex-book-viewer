@@ -18,6 +18,8 @@ import chalk from 'chalk';
     '@atlas-viewer/atlas',
     '@atlas-viewer/iiif-image-api',
     'react-iiif-vault',
+    '@iiif/vault-helpers/react-i18next',
+    'react-i18next'
   ];
 
   // Main UMD build.
