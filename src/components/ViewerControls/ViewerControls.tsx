@@ -11,7 +11,7 @@ import {
 } from './ViewerControls.styles';
 import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 
 export function ViewerControls() {
@@ -22,13 +22,17 @@ export function ViewerControls() {
   const totalCanvases = items.length;
   const [cachedFolio, setCachedFolio] = useState(null);
 
-  const prev_lang = {en: ['Previous'], es: ['Anterior']};
-  const next_lang = {en: ['Next'], es: ['Siguiente']};
-  const of_lang = {en: ['of'], es: ['de']};
+  const prev_lang = { en: ['Previous'], es: ['Anterior'] };
+  const next_lang = { en: ['Next'], es: ['Siguiente'] };
+  const of_lang = { en: ['of'], es: ['de'] };
 
   useEffect(() => {
-    if (canvas && canvas.metadata[2] && canvas.metadata[2].value.en) {
-      setCachedFolio(canvas.metadata[2].value.en[0] as any);
+    try {
+      if (canvas && canvas.metadata[2] && canvas.metadata[2].value && canvas.metadata[2].value.en) {
+        setCachedFolio(canvas.metadata[2].value.en[0] as any);
+      }
+    } catch (e) {
+      // nothing.
     }
   }, [canvas]);
 
