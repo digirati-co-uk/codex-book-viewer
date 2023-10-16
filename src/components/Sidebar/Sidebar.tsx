@@ -2,8 +2,8 @@ import { Container, Heading, Content, Buttons, Button } from './Sidebar.styles';
 import { useTranslation } from 'react-i18next';
 import { ReactElement } from 'react';
 import { useGridContext, useGridState } from '../Grid/Grid.context';
-import { ChevronLeft } from '@styled-icons/heroicons-solid/ChevronLeft';
-import { ChevronRight } from '@styled-icons/heroicons-solid/ChevronRight';
+import { ChevronLeftIcon } from '../../icons/ChevronLeftIcon';
+import { ChevronRightIcon } from '../../icons/ChevronRightIcon';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import { GridView } from '@styled-icons/material-rounded/GridView';
 
@@ -31,7 +31,7 @@ export function Sidebar({ children }: SidebarProps) {
                 gridActions.closeLeftPanel();
               }}
             >
-              <ChevronLeft />
+              <ChevronRightIcon />
             </Button>
           ) : (
             <Button
@@ -40,7 +40,7 @@ export function Sidebar({ children }: SidebarProps) {
                 gridActions.openLeftPanel();
               }}
             >
-              <ChevronRight />
+              <ChevronLeftIcon />
             </Button>
           ))}
 

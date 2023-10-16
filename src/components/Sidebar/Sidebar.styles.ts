@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 8em 1em 1em 1em;
   width: 100%;
   position: relative;
+  min-width: 150px;
 `;
 
 export const Heading = styled.h3`
@@ -27,6 +28,7 @@ export const Content = styled.div`
 
 export const Buttons = styled.div`
   display: flex;
+  border-top: 2px solid #ffffff47;
 `;
 
 export const Button = styled.button`
@@ -38,8 +40,9 @@ export const Button = styled.button`
   display: flex;
   place-items: center;
   z-index: 12;
-  margin: 5px;
+  margin: 10px 5px 0 5px;
   cursor: pointer;
+  position: relative;
 
   :hover {
     background-color: ${highlight};
@@ -50,9 +53,8 @@ export const Button = styled.button`
   }
   svg {
     align-items: center;
-    color: white;
-    width: 18px;
-    height: 18px;
+    fill: white;
+    font-size: 16px;
     z-index: 12;
   }
 `;
