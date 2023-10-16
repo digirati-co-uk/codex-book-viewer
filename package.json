@@ -12,11 +12,13 @@
     ".": {
       "require": "./dist/bundle/cjs/index.js",
       "import": "./dist/bundle/esm/index.mjs",
-      "default": "./dist/index.umd.js"
+      "default": "./dist/index.umd.js",
+      "types": "./.build/types/npm.d.ts"
     },
     "./react17": {
       "require": "./dist/react17/cjs/index.js",
-      "import": "./dist/react17/esm/index.mjs"
+      "import": "./dist/react17/esm/index.mjs",
+      "types": "./.build/types/npm.d.ts"
     }
   },
   "typesVersions": {
