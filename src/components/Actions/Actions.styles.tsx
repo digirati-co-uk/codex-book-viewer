@@ -56,17 +56,19 @@ export const Zoom = styled.div`
 export const ZoomBtn = styled.button`
   background-color: transparent;
   border: none;
-  color: white;
   border-radius: 25px;
   cursor: pointer;
-  padding: 010px;
+  padding: 10px;
 
   svg {
-    height: 18px;
+    font-size: 18px;
+    fill: white;
   }
 
   :hover {
-    color: #8bcfd7;
+    svg {
+      fill: #8bcfd7;
+    }
   }
 
   :focus {

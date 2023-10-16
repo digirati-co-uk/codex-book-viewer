@@ -1,9 +1,7 @@
 import { Container, Layout, Zoom, LayoutBtn, Icon, Divider, ZoomBtn } from './Actions.styles';
-import { ZoomIn } from '@styled-icons/bootstrap/ZoomIn';
-import { ZoomOut } from '@styled-icons/bootstrap/ZoomOut';
-import { Plus } from '@styled-icons/fa-solid/Plus';
-import { Minus } from '@styled-icons/fa-solid/Minus'
-import { Home } from '@styled-icons/material/Home'
+import { PlusIcon } from '../../icons/PlusIcon'
+import { MinusIcon } from '../../icons/MinusIcon'
+import { HomeIcon } from '../../icons/HomeIcon'
 interface ActionsProps {
   onLayout(s: string): void;
   onZoomIn(): void;
@@ -46,7 +44,7 @@ export function Actions(props: ActionsProps) {
             props.onZoomIn();
           }}
         >
-          <Plus />
+          <PlusIcon />
         </ZoomBtn>
 
         <ZoomBtn
@@ -55,7 +53,7 @@ export function Actions(props: ActionsProps) {
             props.onReset();
           }}
         >
-          <Home />
+          <HomeIcon />
         </ZoomBtn>
 
         <ZoomBtn
@@ -64,7 +62,7 @@ export function Actions(props: ActionsProps) {
             props.onZoomOut();
           }}
         >
-          <Minus />
+          <MinusIcon />
         </ZoomBtn>
       </Zoom>
     </Container>

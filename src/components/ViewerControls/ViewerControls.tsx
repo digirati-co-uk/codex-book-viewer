@@ -13,18 +13,14 @@ import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useState } from 'react';
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
-
+import { useTranslation } from 'react-i18next';
 export function ViewerControls() {
   const canvas = useCanvas();
-
   const manifest = useManifest();
   const { items, nextCanvas, previousCanvas } = useSimpleViewer();
   const totalCanvases = items.length;
   const [cachedFolio, setCachedFolio] = useState(null);
-
-  const prev_lang = { en: ['Previous'], es: ['Anterior'] };
-  const next_lang = { en: ['Next'], es: ['Siguiente'] };
-  const of_lang = { en: ['of'], es: ['de'] };
+  const { t } = useTranslation();
 
   useEffect(() => {
     try {
@@ -48,20 +44,20 @@ export function ViewerControls() {
             <ButtonIcon>
               <PrevIcon />
             </ButtonIcon>
-            <LocaleString>{prev_lang}</LocaleString>
+            {t('previous')}
           </Button>
           <CentralContainer>
             <InputLabel>Folio </InputLabel>
             <InputLabel>{cachedFolio}</InputLabel>
             <TextContainer>
-              <LocaleString>{of_lang}</LocaleString>
+              {t('of')}
             </TextContainer>
             <TextContainer>
               <strong>{totalCanvases}</strong>
             </TextContainer>
           </CentralContainer>
           <Button $pos="right" onClick={nextCanvas}>
-            <LocaleString>{next_lang}</LocaleString>
+            {t('next')}
             <ButtonIcon>
               <NextIcon />
             </ButtonIcon>
