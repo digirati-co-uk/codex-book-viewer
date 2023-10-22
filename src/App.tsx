@@ -3,9 +3,9 @@ import { CodexViewer } from './CodexViewer';
 export function App() {
   return (
     <CodexViewer
-      manifest="http://localhost:8000/iiif/iiif/manifest/34324a46-f9e5-4678-97a3-3ee4528170e1/"
-      initCanvas="http://localhost:8000/iiif/iiif/canvas/ef6f77cc-2b30-48b6-9d4b-82fd248777c3/"
-      range="https://digirati-co-uk.github.io/florentine-data-exploration/iiif3/range/book/12.json"
+      manifest="https://dfc-be.ch.digtest.co.uk/iiif/iiif/manifest/f7e7ee30-7507-40db-acd2-9cd43df95b8f/"
+      initCanvas="https://dfc-be.ch.digtest.co.uk/iiif/iiif/canvas/8782208c-45a2-44f9-9538-e3810a08fca4/"
+      range="https://digirati-co-uk.github.io/florentine-data-exploration/iiif3/range/book/11.json"
     />
   );
 }

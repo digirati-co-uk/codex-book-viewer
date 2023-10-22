@@ -13,6 +13,7 @@ import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useState } from 'react';
 import { LocaleString } from '@iiif/vault-helpers/react-i18next';
+import { Skeleton } from '../Skeleton'
 
 export function ViewerControls() {
   const canvas = useCanvas();
