@@ -1,8 +1,7 @@
 import { Container, Layout, Zoom, LayoutBtn, Icon, Divider, ZoomBtn } from './Actions.styles';
-import { ZoomIn } from '@styled-icons/bootstrap/ZoomIn';
-import { ZoomOut } from '@styled-icons/bootstrap/ZoomOut';
-import { ZoomOutMap } from '@styled-icons/material-sharp/ZoomOutMap';
-
+import { PlusIcon } from '../../icons/PlusIcon'
+import { MinusIcon } from '../../icons/MinusIcon'
+import { HomeIcon } from '../../icons/HomeIcon'
 interface ActionsProps {
   onLayout(s: string): void;
   onZoomIn(): void;
@@ -15,6 +14,7 @@ export function Actions(props: ActionsProps) {
     <Container>
       <Layout>
         <LayoutBtn
+          title={'Single page'}
           $selected={props.paging ? '2' : '1'}
           $id={'1'}
           onClick={() => {
@@ -24,6 +24,7 @@ export function Actions(props: ActionsProps) {
           <Icon />
         </LayoutBtn>
         <LayoutBtn
+          title={'Spread'}
           $selected={props.paging ? '2' : '1'}
           $id={'2'}
           onClick={() => {
@@ -38,27 +39,30 @@ export function Actions(props: ActionsProps) {
 
       <Zoom>
         <ZoomBtn
+          title={'Zoom in'}
           onClick={() => {
             props.onZoomIn();
           }}
         >
-          <ZoomIn />
+          <PlusIcon />
         </ZoomBtn>
 
         <ZoomBtn
+          title={'Reset view'}
           onClick={() => {
             props.onReset();
           }}
         >
-          <ZoomOutMap />
+          <HomeIcon />
         </ZoomBtn>
 
         <ZoomBtn
+          title={'Zoom out'}
           onClick={() => {
             props.onZoomOut();
           }}
         >
-          <ZoomOut />
+          <MinusIcon />
         </ZoomBtn>
       </Zoom>
     </Container>

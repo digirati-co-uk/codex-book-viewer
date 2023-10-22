@@ -52,17 +52,20 @@ export const ThumbnailViewer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: min-content;
   justify-items: center;
+  
 `;
 
 export const ThumbnailColumn = styled.div<{ $expanded?: boolean }>`
   display: flex;
   flex-wrap: ${(props) => props.$expanded ? 'wrap' : ''};
   flex-direction: ${(props) => props.$expanded ? 'row' : 'column'};
+  
 `;
 export const ThumbnailRow = styled.div<{ $active?: boolean }>`
   display: flex;
   margin: 0.5em;
   justify-content: center;
+  
   ${(props) =>
     props.$active &&
     css`
@@ -75,5 +78,6 @@ export const ThumbnailTitle = styled.h2`
   font-weight: 400;
   font-family: ${sans};
   text-rendering: geometricPrecision;
+  
   color: ${whiteText};
 `;

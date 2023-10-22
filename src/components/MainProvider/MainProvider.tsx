@@ -14,30 +14,24 @@ export function MainProvider(props: MainProviderProps) {
   const resp = useExternalManifest(props.manifest);
 
   if (!manifest || !isLoaded) {
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
 
   if (!resp.manifest) {
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
 
   resp.manifest.behavior = ['paged'];
-
-  // if (isLoaded) {
-  return <Skeleton />
-  // }
-
-
-//   return (
-//     <SimpleViewerProvider
-//       key={props.paging ? 'paging' : 'non-paging'}
-//       pagingEnabled={props.paging}
-//       manifest={props.manifest}
-//       rangeId={props.range}
-//       startCanvas={props.initCanvas}
-//     >
-//       {props.children}
-//     </SimpleViewerProvider>
-//   );
-// }
+  
+  return (
+    <SimpleViewerProvider
+      key={props.paging ? 'paging' : 'non-paging'}
+      pagingEnabled={props.paging}
+      manifest={props.manifest}
+      rangeId={props.range}
+      startCanvas={props.initCanvas}
+    >
+      {props.children}
+    </SimpleViewerProvider>
+  );
 }

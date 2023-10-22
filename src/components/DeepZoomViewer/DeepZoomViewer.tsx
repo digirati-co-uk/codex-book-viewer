@@ -7,7 +7,7 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { AtlasAuto, Runtime } from '@atlas-viewer/atlas';
 import { AtlasCanvas } from '../../atlas-components/AtlasCanvas';
 import { VirtualAnnotationProvider } from '../../hooks/use-virtual-annotation-page-context';
-
+import { useTranslation } from 'react-i18next';
 export interface DeepZoomViewerRef {
   startZoom(v: number): void;
   resetZoom(): void;
@@ -39,20 +39,21 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
   });
 
   const metadata = canvases[0].metadata || [];
-
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language
   const book = metadata ? metadata.findIndex((x) => x.label && x.label.en?.includes('Book')) : -1;
   const bookTitle = metadata ? metadata.findIndex((x) => x.label && x.label.en?.includes('Title')) : -1;
-
+  
   return (
     <Container>
       <Heading>
         {book !== -1 ? (
           <>
-            <LocaleString>{metadata[book].label}</LocaleString> <LocaleString>{metadata[book].value}</LocaleString>
+            {t('book')} <>{metadata[book].value[lang]}</>
             {' - '}
           </>
         ) : null}
-        <LocaleString>{bookTitle === -1 ? canvases[0].label : metadata[bookTitle].value}</LocaleString>
+        <>{bookTitle === -1 ?<LocaleString>{canvases[0].label}</LocaleString> : metadata[bookTitle].value[lang]}</>
       </Heading>
       <ViewerControls />
       <style>{`
