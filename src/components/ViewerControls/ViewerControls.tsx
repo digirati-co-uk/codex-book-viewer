@@ -9,11 +9,12 @@ import {
   FloatingContainer,
   FloatingContainerOuter,
 } from './ViewerControls.styles';
+import { Spinner } from '../Skeleton'
 import { PrevIcon } from '../../icons/PrevIcon';
 import { NextIcon } from '../../icons/NextIcon';
 import { useEffect, useState } from 'react';
-import { LocaleString } from '@iiif/vault-helpers/react-i18next';
 import { useTranslation } from 'react-i18next';
+
 export function ViewerControls() {
   const canvas = useCanvas();
   const manifest = useManifest();
@@ -33,7 +34,7 @@ export function ViewerControls() {
   }, [canvas]);
 
   if (!manifest) {
-    return <div>Loading...</div>;
+    return <Spinner />
   }
 
   return (

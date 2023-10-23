@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { SimpleViewerProvider, useExternalManifest } from 'react-iiif-vault';
-
+import { Skeleton } from '../Skeleton'
 interface MainProviderProps {
   manifest: string;
   children: ReactElement;
@@ -14,14 +14,15 @@ export function MainProvider(props: MainProviderProps) {
   const resp = useExternalManifest(props.manifest);
 
   if (!manifest || !isLoaded) {
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
 
   if (!resp.manifest) {
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
-  resp.manifest.behavior = ['paged'];
 
+  resp.manifest.behavior = ['paged'];
+  
   return (
     <SimpleViewerProvider
       key={props.paging ? 'paging' : 'non-paging'}
