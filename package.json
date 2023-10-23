@@ -35,7 +35,8 @@
     "prepublishOnly": "tsc -p . --declaration --emitDeclarationOnly && node ./scripts/build.mjs && node ./scripts/validate.mjs"
   },
   "resolutions": {
-    "@atlas-viewer/iiif-image-api": "^2.0.3"
+    "@atlas-viewer/atlas": "^2.0.0-alpha.21",
+    "@atlas-viewer/iiif-image-api": "^2.1.1"
   },
   "devDependencies": {
     "@types/react": "17.0.44",
@@ -53,8 +54,8 @@
     "vite-preset-react": "^2.2.0"
   },
   "dependencies": {
-    "@atlas-viewer/atlas": "^2.0.0-alpha.10",
-    "@atlas-viewer/iiif-image-api": "^2.0.3",
+    "@atlas-viewer/atlas": "^2.0.0-alpha.21",
+    "@atlas-viewer/iiif-image-api": "^2.1.1",
     "@iiif/parser": "1.*",
     "@iiif/presentation-3": "^1.0.5",
     "@iiif/vault": "^0.9.19",
