@@ -27,6 +27,7 @@ export function Image({
       {!image.service ? (
         <Fragment key="no-service">
           <world-image
+            crop={null}
             uri={image.id}
             target={image.target.spatial}
             display={

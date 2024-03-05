@@ -68,6 +68,7 @@ export const AtlasCanvas: FC<{
       return (
         <world-object height={canvas.height} width={canvas.width} x={x} y={y}>
           <world-image
+           crop={null}
             uri={thumbnail.id}
             target={{ x: 0, y: 0, width: canvas.width, height: canvas.height }}
             display={
