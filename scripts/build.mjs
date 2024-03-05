@@ -3,10 +3,9 @@ import { build } from 'vite';
 import chalk from 'chalk';
 
 (async () => {
-
   const defaultExternal = [
     '@iiif/vault',
-    '@iiif/vault-helpers',
+    '@iiif/helpers',
     '@iiif/parser',
     'redux',
     'typesafe-actions',
@@ -18,8 +17,7 @@ import chalk from 'chalk';
     '@atlas-viewer/atlas',
     '@atlas-viewer/iiif-image-api',
     'react-iiif-vault',
-    '@iiif/vault-helpers/react-i18next',
-    'react-i18next'
+    'react-i18next',
   ];
 
   // Main UMD build.
@@ -35,7 +33,7 @@ import chalk from 'chalk';
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-      }
+      },
     })
   );
 

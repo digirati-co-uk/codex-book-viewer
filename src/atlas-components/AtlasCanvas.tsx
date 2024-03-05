@@ -4,10 +4,10 @@ import {
   useRenderingStrategy,
   useThumbnail,
   useVault,
-  ChoiceDescription,
   StrategyActions,
 } from 'react-iiif-vault';
-import { createStylesHelper } from '@iiif/vault-helpers';
+import { ChoiceDescription } from '@iiif/helpers/painting-annotations';
+import { createStylesHelper } from '@iiif/helpers/styles';
 // import { RenderAnnotationPage } from "../RenderAnnotationPage/RenderAnnotationPage";
 import { Image } from './Image';
 import { FC, Fragment, useEffect, useLayoutEffect, useMemo } from 'react';

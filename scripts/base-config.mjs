@@ -1,9 +1,8 @@
 import react from '@vitejs/plugin-react';
-import chalk from "chalk";
+import chalk from 'chalk';
 
 export const defaultExternal = [
-  '@iiif/vault',
-  '@iiif/vault-helpers',
+  '@iiif/helpers',
   '@iiif/parser',
   'redux',
   'typesafe-actions',
@@ -42,17 +41,15 @@ export function defineConfig(options) {
       },
       watch: options.watch,
       plugins: [
-        options.react ?
-          options.react18 ?
-            react({ jsxRuntime: 'automatic', jsxPure: true, }) :
-            react({ jsxRuntime: 'classic', jsxPure: true, })
+        options.react
+          ? options.react18
+            ? react({ jsxRuntime: 'automatic', jsxPure: true })
+            : react({ jsxRuntime: 'classic', jsxPure: true })
           : false,
       ].filter(Boolean),
       rollupOptions: {
         treeshake: true,
-        external: options.react18 ?
-          [...options.external, 'react-dom/client']
-          : options.external,
+        external: options.react18 ? [...options.external, 'react-dom/client'] : options.external,
         output: {
           globals: options.globals,
           inlineDynamicImports: !!options.globalName,

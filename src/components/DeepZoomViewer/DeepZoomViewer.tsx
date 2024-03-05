@@ -1,6 +1,6 @@
 import { AtlasContainer, Container, Heading } from './DeepZoomViewer.styles';
 import { CanvasContext, ContextBridge, useContextBridge, useVisibleCanvases } from 'react-iiif-vault';
-import { LocaleString } from '@iiif/vault-helpers/react-i18next';
+import { LocaleString } from 'react-iiif-vault';
 import { ViewerControls } from '../ViewerControls/ViewerControls';
 import { blackBg2 } from '../../tokens';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
@@ -40,10 +40,10 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
 
   const metadata = canvases[0].metadata || [];
   const { t, i18n } = useTranslation();
-  const lang = i18n.language
+  const lang = i18n.language;
   const book = metadata ? metadata.findIndex((x) => x.label && x.label.en?.includes('Book')) : -1;
   const bookTitle = metadata ? metadata.findIndex((x) => x.label && x.label.en?.includes('Title')) : -1;
-  
+
   return (
     <Container>
       <Heading>
@@ -53,7 +53,7 @@ export const DeepZoomViewer = forwardRef((DeepZoomViewerRef, ref) => {
             {' - '}
           </>
         ) : null}
-        <>{bookTitle === -1 ?<LocaleString>{canvases[0].label}</LocaleString> : metadata[bookTitle].value[lang]}</>
+        <>{bookTitle === -1 ? <LocaleString>{canvases[0].label}</LocaleString> : metadata[bookTitle].value[lang]}</>
       </Heading>
       <ViewerControls />
       <style>{`

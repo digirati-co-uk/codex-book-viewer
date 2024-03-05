@@ -2,7 +2,7 @@ import { CanvasContext, useManifest, useSimpleViewer, useVault } from 'react-iii
 import { SingleCanvasThumbnail } from '../SingleCanvasThumbnail/SingleCanvasThumbnail';
 import { ThumbnailRow, Thumbnail, ThumbnailCover, ThumbnailColumn } from './ThumbnailPageList.styles';
 import { useLayoutEffect } from 'react';
-import { CanvasNormalized } from '@iiif/presentation-3';
+import { CanvasNormalized } from '@iiif/presentation-3-normalized';
 import { useGridState } from '../Grid/Grid.context';
 
 export function ThumbnailPagedList() {
@@ -28,7 +28,6 @@ export function ThumbnailPagedList() {
   return (
     <ThumbnailColumn $expanded={gridState.expanded}>
       {sequence.map((sideBySide, idx) => {
-
         return (
           <ThumbnailRow data-canvas-sequence-index={idx} key={idx} $active={idx === currentSequenceIndex}>
             {sideBySide.map((index) => {
@@ -38,10 +37,7 @@ export function ThumbnailPagedList() {
 
               return (
                 <CanvasContext key={canvas.id} canvas={canvas.id}>
-                  <T
-                    onClick={() => setCurrentCanvasId(canvas.id)}
-                    data-canvas-thumbnail-index={idx}
-                  >
+                  <T onClick={() => setCurrentCanvasId(canvas.id)} data-canvas-thumbnail-index={idx}>
                     <SingleCanvasThumbnail size={128} />
                   </T>
                 </CanvasContext>
