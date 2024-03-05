@@ -1,7 +1,4 @@
 {
-  "sandboxes": [
-    "new",
-    "react"
-  ],
-  "node": "16"
+  "sandboxes": ["new", "react"],
+  "node": "18"
 }
