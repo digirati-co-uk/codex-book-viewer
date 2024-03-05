@@ -67,7 +67,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.5",
-    "react-iiif-vault": "^1.0.9",
+    "react-iiif-vault": "^1.0.10",
     "react-is": "^18.2.0",
     "react-lazy-load-image-component": "^1.6.0",
     "styled-components": "5.*",

@@ -11,7 +11,7 @@ export interface CodexViewerProps {
   manifest: string;
   initCanvas: string;
   range: string;
-}
+} 
 
 export function CodexViewer(props: CodexViewerProps) {
   const zoom_ref = useRef<DeepZoomViewerRef>(null);
