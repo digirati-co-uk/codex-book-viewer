@@ -2034,10 +2034,10 @@ react-i18next@^14.0.5:
     "@babel/runtime" "^7.23.9"
     html-parse-stringify "^3.0.1"
 
-react-iiif-vault@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/react-iiif-vault/-/react-iiif-vault-1.0.10.tgz#8f848d4fb4648c16b6808ea04a13e59ecf9a3be4"
-  integrity sha512-KDtc64jo7EUvsx+x4xt68F2v0L6JvfsJApX41mScmvm2BeqhkUybAXYNHhWLCHvo0F40KYyD+RE5Tfx901sFxQ==
+react-iiif-vault@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/react-iiif-vault/-/react-iiif-vault-1.0.11.tgz#e9d7cfb465c9f01c8aa2172a572208918e65d3d1"
+  integrity sha512-RBi+DyhUs0Ssug8W+EY3Q9fRyuwwRt7eIWFUEQKOWKcPoH52npPlAilE3xAO/SdjENG3+LCz4/AX1c069SNv8w==
   dependencies:
     "@atlas-viewer/atlas" ">=2.0.6"
     "@atlas-viewer/iiif-image-api" ">=2.1.1"
